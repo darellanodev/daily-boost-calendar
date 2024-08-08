@@ -1,5 +1,5 @@
 html {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -12,6 +12,7 @@ main {
   align-items: center;
   height: 60vh;
 }
+
 section#calendar {
   background-color: lightslategray;
   margin: 1rem;
@@ -19,22 +20,23 @@ section#calendar {
   width: 900px;
   height: 200px;
 }
+
 div#rows {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: end;
   height: 100%;
 }
+
 .day {
-  width: 20px;
-  height: 20px;
   margin: 0.2rem;
+  min-width: 20px;
 }
+
 .on {
   background-color: darkcyan;
 }
+
 .off {
   background-color: lightblue;
 }
