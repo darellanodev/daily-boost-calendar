@@ -1,0 +1,11 @@
+main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+section#calendar {
+    background-color: lightslategray;
+    margin: 1rem;
+    padding: 1rem;
+}
