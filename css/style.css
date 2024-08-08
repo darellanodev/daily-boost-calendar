@@ -4,6 +4,7 @@ html {
 
 body {
   background-color: #555;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main {
@@ -11,6 +12,40 @@ main {
   justify-content: center;
   align-items: center;
   height: 60vh;
+}
+
+h1 {
+  color: #222;
+}
+
+a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+a.btn {
+  color: darkblue;
+  text-decoration: none;
+  background-color: #999;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+header,
+nav,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
 
 section#calendar {
