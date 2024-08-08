@@ -32,6 +32,15 @@ a.btn {
   border-radius: 0.2rem;
 }
 
+a.btn:hover {
+  background-color: #bbb;
+  color: darkblue;
+}
+
+a:hover {
+  color: lightblue;
+}
+
 header,
 nav,
 footer {
