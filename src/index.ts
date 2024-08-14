@@ -1,8 +1,12 @@
+import moment from "moment"
 import { Calendar } from "./Calendar.js"
 import { Day } from "./Day.js"
 
 const day = new Day()
 console.log(day.isOn)
+
+const actualDate = moment()
+console.log(actualDate)
 
 document.addEventListener("DOMContentLoaded", () => {
   const rowsElement: HTMLElement | null = document.querySelector("#rows")
