@@ -22,7 +22,7 @@ export class Calendar {
       if (i % 20 === 0) {
         dayElement.className = "day on"
       }
-      dayElement.innerHTML = i.toString()
+      dayElement.innerHTML = day.label
       this.#rowsElement.appendChild(dayElement)
     }
   }

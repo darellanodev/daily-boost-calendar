@@ -1,7 +1,13 @@
 export class Day {
-  #isOn = false;
-  constructor() {}
+  #label: string
+  #isOn = false
+  constructor(label: string) {
+    this.#label = label
+  }
+  get label() {
+    return this.#label
+  }
   get isOn() {
-    return this.#isOn;
+    return this.#isOn
   }
 }
