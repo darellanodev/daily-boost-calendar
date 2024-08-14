@@ -4,13 +4,16 @@ An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICA
 
 ## e2e tests
 
-- First run server with `run_server.sh`
-- When the server is running execute `run_e2e`
+- Execute the command `npm run dev` (or run the script `./run.sh`)
+- When the server is running execute `./run_e2e.sh`
 
 ## compile and run the game
 
-- Execute `run.sh` and wait to typescript end the compiling process
-- Open with Live Server VSCode extension `index.html`
+- Execute the command `npm run dev` (or run the script `./run.sh`)
+
+## build with vite
+
+- Execute the commmand `npm run build`
 
 ## Next tasks
 
