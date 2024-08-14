@@ -17,7 +17,8 @@ An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICA
 - [ ] show the day when the mouse is over a day item
 - [ ] the last day must be the actual day
 - [ ] add a first row for the days
-- [x] add some stats to the design prototype:
+- [ ] add the stats of the prototype design.
+- [x] add some stats to the prototype design.
 - [x] do a basic html structure with a heading, navbar, footer
 - [x] make some days boxes
 - [x] make some basic tests with jest and playwright to check the proper functioning of these tools
