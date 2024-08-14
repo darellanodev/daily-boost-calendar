@@ -7,6 +7,8 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* main elements */
+
 main {
   display: flex;
   flex-direction: column;
@@ -14,6 +16,8 @@ main {
   align-items: center;
   height: 60vh;
 }
+
+/* stats */
 
 #stats {
   display: flex;
@@ -38,6 +42,8 @@ main {
 h1 {
   color: #222;
 }
+
+/* buttons and links */
 
 a {
   color: darkblue;
@@ -77,6 +83,8 @@ nav ul {
   margin: 0;
   padding: 0;
 }
+
+/* calendar */
 
 section#calendar {
   background-color: lightslategray;
