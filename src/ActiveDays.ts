@@ -6,8 +6,6 @@ export class ActiveDays {
     this.#activeDays = activeDays
   }
   isActiveDay(day: Day): boolean {
-    const found = this.#activeDays.find((element) => element === day.label)
-    const result = found !== undefined ? true : false
-    return result
+    return this.#activeDays.includes(day.label)
   }
 }
