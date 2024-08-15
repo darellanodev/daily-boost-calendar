@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const totalWeeks = 4
   const datesProvider = new DatesProvider(totalWeeks)
-  const dates = datesProvider.getDates()
+  datesProvider.calculate()
+  const dates = datesProvider.dates
 
   // example days
   const days: Day[] = []
