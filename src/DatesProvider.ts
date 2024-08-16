@@ -24,7 +24,6 @@ export class DatesProvider {
     return pastDate
   }
   #getWeeks(pastDate: moment.Moment) {
-    // add 4 weeks
     const daysOfWeek = 7
     for (let j = 0; j < this.#totalWeeks; j++) {
       for (let k = 0; k < daysOfWeek; k++) {
