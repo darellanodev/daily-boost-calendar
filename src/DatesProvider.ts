@@ -9,12 +9,11 @@ export class DatesProvider {
   get dates() {
     return this.#dates
   }
-  calculate() {
+  #getDatesFromCurrentToPreviousSunday() {
     const currentDate = moment()
     const currentDay = currentDate.day()
     const sunday = 0
 
-    // from current day to the past sunday
     this.#dates.push(currentDate.format("DD/MM/YYYY"))
     let pastDate = currentDate.clone()
     for (let day = sunday; day < currentDay; day++) {
@@ -22,7 +21,10 @@ export class DatesProvider {
       console.log(pastDate.format("DD/MM/YYYY"))
       this.#dates.push(pastDate.format("DD/MM/YYYY"))
     }
-
+    return pastDate
+  }
+  calculate() {
+    let pastDate = this.#getDatesFromCurrentToPreviousSunday()
     // add 4 weeks
     const daysOfWeek = 7
     for (let j = 0; j < this.#totalWeeks; j++) {
