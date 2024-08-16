@@ -26,4 +26,4 @@ An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICA
 2. Work on the task: You create a new branch in your local repository to work on the task: git checkout -b add-form-validation.
 3. Make commits: As you progress, you make commits with messages referencing the issue: git commit -m "Add basic form validation #10".
 4. Complete the task: Once the task is finished, you make a final commit that closes the issue: git commit -m "Complete form validation, closes #10".
-5. Merge changes: You merge the branch into the main branch, and issue #10 is automatically closed on GitHub.
+5. Make a pull request of your branch
