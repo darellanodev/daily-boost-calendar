@@ -19,6 +19,7 @@ An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICA
 
 - You can send a pull request resolving an issue with this rules:
   - Write all in english.
+  - Use the present tense infinitive when making commit messages
   - Do TDD if it is possible (write a test, then implement, then refactor)
   - Follow this example workflow:
 
