@@ -23,8 +23,7 @@ export class DatesProvider {
     }
     return pastDate
   }
-  calculate() {
-    let pastDate = this.#getDatesFromCurrentToPreviousSunday()
+  #getWeeks(pastDate: moment.Moment) {
     // add 4 weeks
     const daysOfWeek = 7
     for (let j = 0; j < this.#totalWeeks; j++) {
@@ -33,6 +32,10 @@ export class DatesProvider {
         this.#dates.push(pastDate.format("DD/MM/YYYY"))
       }
     }
+  }
+  calculate() {
+    let pastDate = this.#getDatesFromCurrentToPreviousSunday()
+    this.#getWeeks(pastDate)
     this.#dates.reverse()
   }
 }
