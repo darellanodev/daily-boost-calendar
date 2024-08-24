@@ -5,6 +5,15 @@ import { Day } from "./Day.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const rowsElement: HTMLElement | null = document.querySelector("#rows")
+  const totalContributionsElement: HTMLElement | null = document.querySelector(
+    "#total-contributions-number",
+  )
+  if (rowsElement === null) {
+    throw new Error("rowsElement is null")
+  }
+  if (totalContributionsElement === null) {
+    throw new Error("totalContributions is null")
+  }
 
   const totalWeeks = 4
   const datesProvider = new DatesProvider(totalWeeks)
