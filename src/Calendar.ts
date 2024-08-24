@@ -4,19 +4,24 @@ import { Day } from "./Day.js"
 export class Calendar {
   #days: Day[] = []
   #rowsElement: HTMLElement
+  #totalContributionsElement: HTMLElement
   #activeDays: ActiveDays
 
-  constructor(
-    rowsElement: HTMLElement | null,
-    days: Day[],
-    activeDays: ActiveDays,
-  ) {
+  constructor(htmlElements: htmlElements, days: Day[], activeDays: ActiveDays) {
     this.#days = days
-    if (rowsElement === null) {
-      throw new Error("rowsElement is null")
-    }
-    this.#rowsElement = rowsElement
+    this.#rowsElement = htmlElements.rowsElement
+    this.#totalContributionsElement = htmlElements.totalContributionsElement
     this.#activeDays = activeDays
+  }
+
+  calculateTotalContributions() {
+    let total = 0
+    for (const day of this.#days) {
+      if (this.#activeDays.isActiveDay(day)) {
+        total++
+      }
+    }
+    return total
   }
 
   createDays() {

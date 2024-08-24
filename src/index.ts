@@ -38,6 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
     days.push(new Day(date))
   }
 
-  const calendar = new Calendar(rowsElement, days, activeDays)
+  const htmlElements: htmlElements = {
+    rowsElement: rowsElement,
+    totalContributionsElement: totalContributionsElement,
+  }
+
+  const calendar = new Calendar(htmlElements, days, activeDays)
+  const totalContributions = calendar.calculateTotalContributions()
+
+  totalContributionsElement.innerHTML = totalContributions.toString()
   calendar.createDays()
 })
