@@ -1,1 +1,1 @@
-npm run e2e
+pnpm run e2e
