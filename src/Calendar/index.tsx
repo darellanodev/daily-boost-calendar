@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import './todolist.css'
+import './calendar.css'
 import { Task } from '../Task'
 
-interface TodoListProps {
+interface CalendarProps {
   title: string
 }
 
-export function TodoList({ title }: TodoListProps) {
+export function Calendar({ title }: CalendarProps) {
   const [tasks, setTasks] = useState([
     { id: 1, title: 'buy milk', completed: false },
     { id: 2, title: 'go to gym', completed: true },
@@ -21,9 +21,9 @@ export function TodoList({ title }: TodoListProps) {
   }
 
   return (
-    <div className="todo-list-card">
-      <div className="todo-list-card-header">{title}</div>
-      <div className="todo-list-card-body">
+    <div className="calendar-card">
+      <div className="calendar-card-header">{title}</div>
+      <div className="calendar-card-body">
         {tasks.map((task) => (
           <Task key={task.id} task={task} onToggle={toggleTaskCompletion} />
         ))}

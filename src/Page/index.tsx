@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import { TodoList } from '../TodoList'
+import { Calendar } from '../Calendar'
 import { Header } from '../Header'
 import './page.css'
-import { BrainList } from '../BrainList'
 import { AddTask } from '../AddTask'
 
 type User = {
@@ -30,13 +29,8 @@ export const Page: React.VFC = () => {
         <section>
           <p className="help">Tutorial 1/8: look at the Brain Thoughts</p>
           <div className="taskslists">
-            <BrainList title="Brain thoughts" />
-            <TodoList title="Todo List1" />
+            <Calendar title="Todo List1" />
           </div>
-
-          {/* <button onClick={() => setCount((count) => count + 1)}>
-              count is {count}
-            </button> */}
           <AddTask onAddTask={handleAddTask} />
         </section>
       </article>

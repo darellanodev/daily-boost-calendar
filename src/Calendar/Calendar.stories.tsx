@@ -1,17 +1,17 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 
-import { TodoList } from '.'
+import { Calendar } from '.'
 
 export default {
-  title: 'Example/TodoList',
-  component: TodoList,
+  title: 'Example/Calendar',
+  component: Calendar,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof TodoList>
+} as Meta<typeof Calendar>
 
-const Template: StoryFn<typeof TodoList> = (args: any) => <TodoList {...args} />
+const Template: StoryFn<typeof Calendar> = (args: any) => <Calendar {...args} />
 
 export const Incomplete = Template.bind({})
 Incomplete.args = {
