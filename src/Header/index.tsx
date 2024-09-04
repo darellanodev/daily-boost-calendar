@@ -24,7 +24,7 @@ export const Header = ({
     <div className="wrapper">
       <div>
         <img id="header-logo" src="src/assets/img/logo.svg" />
-        <h1 id="header-title">Task Eater Manager</h1>
+        <h1 id="header-title">Daily Boost Calendar</h1>
       </div>
       <div>
         {user ? (
