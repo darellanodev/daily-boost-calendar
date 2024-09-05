@@ -1,4 +1,4 @@
-.task {
+.day {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border: 1px solid midnightblue;
   border-radius: 3em;
@@ -8,9 +8,9 @@
   line-height: 1;
   padding: 0.5em;
 }
-.task-incomplete {
+.day-incomplete {
   font-weight: 700;
 }
-.task-completed {
+.day-completed {
   text-decoration: line-through;
 }
