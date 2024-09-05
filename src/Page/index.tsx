@@ -29,7 +29,7 @@ export const Page: React.VFC = () => {
         <section>
           <p className="help">Tutorial 1/8: look at the Brain Thoughts</p>
           <div className="taskslists">
-            <Calendar title="Todo List1" />
+            <Calendar title="Calendar" />
           </div>
           <AddTask onAddTask={handleAddTask} />
         </section>
