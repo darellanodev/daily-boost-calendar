@@ -1,16 +1,10 @@
 .day {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  border: 1px solid midnightblue;
-  border-radius: 3em;
-  background-color: burlywood;
-  cursor: pointer;
-  display: inline-block;
-  line-height: 1;
-  padding: 0.5em;
+  margin: 0.2rem;
+  min-width: 20px;
 }
 .day-incomplete {
-  font-weight: 700;
+  background-color: lightblue;
 }
 .day-completed {
-  text-decoration: line-through;
+  background-color: darkcyan;
 }
