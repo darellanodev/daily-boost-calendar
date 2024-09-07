@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './calendar.css'
+import { DayItem } from '../DayItem'
+import { DatesProvider } from '../DatesProvider'
 import { Day } from '../Day'
 
 interface CalendarProps {
@@ -7,10 +9,20 @@ interface CalendarProps {
 }
 
 export function Calendar({ title }: CalendarProps) {
-  const [days, setDays] = useState([
-    { id: 1, title: '22/7/2024', completed: false },
-    { id: 2, title: '23/7/2024', completed: true },
-  ])
+  const totalWeeks = 4
+  const datesProvider = new DatesProvider(totalWeeks)
+  datesProvider.calculate()
+  const dates = datesProvider.dates
+
+  // example days
+  const daysItems: DayItem[] = []
+  let i = 1
+  for (const date of dates) {
+    daysItems.push(new DayItem(i, date, false))
+    i++
+  }
+
+  const [days, setDays] = useState(daysItems)
 
   return (
     <div className="calendar-card">
