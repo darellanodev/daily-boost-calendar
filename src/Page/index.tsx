@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Calendar } from '../Calendar'
 import { Header } from '../Header'
 import './page.css'
-import { AddTask } from '../AddTask'
+import { Stats } from '../Stats'
 
 type User = {
   name: string
@@ -31,7 +31,7 @@ export const Page: React.VFC = () => {
           <div className="taskslists">
             <Calendar title="Calendar" />
           </div>
-          <AddTask onAddTask={handleAddTask} />
+          <Stats title="test" />
         </section>
       </article>
     </div>
