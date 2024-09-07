@@ -2,18 +2,37 @@
 
 An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICATION IS IN AN EARLY STAGE OF DEVELOPMENT)_
 
+## Requeriments
+
+Node, pnpm (recommended instead of npm).
+
+## Installation
+
+Run the command `pnpm install`
+
+## Running the application in development mode
+
+- Execute the script `./run.sh`
+
+## Unit tests
+
+- Run the script `./run_tests.sh`
+
 ## E2E tests
 
-- Execute the command `npm run dev` (or run the script `./run.sh`)
-- When the server is running execute `./run_e2e.sh`
+- Run the applicacion in development mode
+- Then, after the application is running, execute `./run_e2e.sh`
 
-## Compile and run the game
+## Running the StoryBook environment
 
-- Execute the command `npm run dev` (or run the script `./run.sh`)
+- Execute the script `./run_sb.sh`
 
-## Build with vite
+## Build
 
-- Execute the commmand `npm run build`
+- Execute the script `./run_build.sh`
+- Manual corrections:
+  - After completing the build process, you must manually remove the first slash from each URL in the `index.html` file.
+  - For the moment, Vite is not copying the file src/assets/img/logo.svg
 
 ## How to contribute
 
