@@ -27,7 +27,7 @@ export const Page: React.VFC = () => {
       />
       <article>
         <section>
-          <p className="help">Tutorial 1/8: look at the Brain Thoughts</p>
+          <p className="help">Welcome to the Daily Boost Calendar.</p>
           <div className="taskslists">
             <Calendar title="Calendar" />
           </div>
