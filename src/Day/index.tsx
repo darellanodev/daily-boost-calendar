@@ -11,9 +11,5 @@ interface DayProps {
 
 export const Day: React.FC<DayProps> = ({ day }) => {
   const statusClass = day.completed ? 'day day-completed' : 'day day-incomplete'
-  return (
-    <div className={statusClass}>
-      id {day.id} {day.title}
-    </div>
-  )
+  return <div className={statusClass}>{day.title}</div>
 }
