@@ -1,5 +1,5 @@
-import { Page } from '../Page'
-import './App.css'
+import { Page } from '../components/Page'
+import './app.css'
 
 function App() {
   return (

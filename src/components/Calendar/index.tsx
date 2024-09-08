@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './calendar.css'
-import { DayItem } from '../DayItem'
-import { DatesProvider } from '../DatesProvider'
+import { DayItem } from '../../models/DayItem'
+import { DatesProvider } from '../../utils/DatesProvider'
 import { Day } from '../Day'
 
 interface CalendarProps {
