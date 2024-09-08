@@ -3,9 +3,17 @@ import './stats.css'
 
 interface StatsProps {
   title: string
+  totalContributions: number
+  currentStreak: number
+  longestStreak: number
 }
 
-export const Stats: React.FC<StatsProps> = ({ title }) => {
+export const Stats: React.FC<StatsProps> = ({
+  title,
+  totalContributions,
+  currentStreak,
+  longestStreak,
+}) => {
   return (
     <div className="stats-container">
       <div id="total-contributions">

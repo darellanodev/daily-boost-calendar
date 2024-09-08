@@ -17,6 +17,10 @@ export const Page: React.VFC = () => {
     console.log('New task added:', newTask)
   }
 
+  const totalContributions = 5
+  const currentStreak = 5
+  const longestStreak = 5
+
   return (
     <div id="page-content">
       <Header
@@ -31,7 +35,12 @@ export const Page: React.VFC = () => {
           <div className="taskslists">
             <Calendar title="Calendar" />
           </div>
-          <Stats title="test" />
+          <Stats
+            title="test"
+            totalContributions={totalContributions}
+            currentStreak={currentStreak}
+            longestStreak={longestStreak}
+          />
         </section>
       </article>
     </div>
