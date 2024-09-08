@@ -1,41 +1,13 @@
-import React, { useState } from 'react'
 import './calendar.css'
-import { DayItem } from '../../models/DayItem'
-import { DatesProvider } from '../../utils/DatesProvider'
 import { Day } from '../Day'
+import { DayItem } from '../../models/DayItem'
 
 interface CalendarProps {
   title: string
+  days: DayItem[]
 }
 
-export function Calendar({ title }: CalendarProps) {
-  const activeDaysList = [
-    '06/08/2024',
-    '07/08/2024',
-    '09/08/2024',
-    '11/08/2024',
-    '13/08/2024',
-    '14/08/2024',
-    '16/08/2024',
-    '18/08/2024',
-  ]
-
-  const totalWeeks = 4
-  const datesProvider = new DatesProvider(totalWeeks)
-  datesProvider.calculate()
-  const dates = datesProvider.dates
-
-  // example days
-  const daysItems: DayItem[] = []
-  let i = 1
-  for (const date of dates) {
-    let completed = activeDaysList.includes(date)
-    daysItems.push(new DayItem(i, date, completed))
-    i++
-  }
-
-  const [days, setDays] = useState(daysItems)
-
+export function Calendar({ title, days }: CalendarProps) {
   return (
     <div className="calendar-card">
       <div className="calendar-card-header">{title}</div>

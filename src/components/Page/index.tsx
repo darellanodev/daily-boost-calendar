@@ -1,9 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
 import { Calendar } from '../Calendar'
 import { Header } from '../Header'
 import './page.css'
 import { Stats } from '../Stats'
+import { DayItem } from '../../models/DayItem'
+import { DatesProvider } from '../../utils/DatesProvider'
 
 type User = {
   name: string
@@ -11,15 +12,38 @@ type User = {
 
 export const Page: React.VFC = () => {
   const [user, setUser] = React.useState<User>()
-  const [count, setCount] = useState(0)
 
-  const handleAddTask = (newTask: string) => {
-    console.log('New task added:', newTask)
+  let totalContributions = 0
+  let currentStreak = 0
+  let longestStreak = 0
+
+  const activeDaysList = [
+    '06/08/2024',
+    '07/08/2024',
+    '09/08/2024',
+    '11/08/2024',
+    '13/08/2024',
+    '14/08/2024',
+    '16/08/2024',
+    '18/08/2024',
+  ]
+
+  const totalWeeks = 4
+  const datesProvider = new DatesProvider(totalWeeks)
+  datesProvider.calculate()
+  const dates = datesProvider.dates
+
+  // example days
+  const daysItems: DayItem[] = []
+  let i = 1
+  for (const date of dates) {
+    let completed = activeDaysList.includes(date)
+    daysItems.push(new DayItem(i, date, completed))
+    i++
+    if (completed) {
+      totalContributions++
+    }
   }
-
-  const totalContributions = 5
-  const currentStreak = 5
-  const longestStreak = 5
 
   return (
     <div id="page-content">
@@ -33,7 +57,7 @@ export const Page: React.VFC = () => {
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
           <div className="taskslists">
-            <Calendar title="Calendar" />
+            <Calendar title="Calendar" days={daysItems} />
           </div>
           <Stats
             totalContributions={totalContributions}
