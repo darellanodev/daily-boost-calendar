@@ -36,7 +36,6 @@ export const Page: React.VFC = () => {
             <Calendar title="Calendar" />
           </div>
           <Stats
-            title="test"
             totalContributions={totalContributions}
             currentStreak={currentStreak}
             longestStreak={longestStreak}

@@ -2,14 +2,12 @@ import React, { useState } from 'react'
 import './stats.css'
 
 interface StatsProps {
-  title: string
   totalContributions: number
   currentStreak: number
   longestStreak: number
 }
 
 export const Stats: React.FC<StatsProps> = ({
-  title,
   totalContributions,
   currentStreak,
   longestStreak,
