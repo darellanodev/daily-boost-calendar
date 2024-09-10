@@ -11,5 +11,13 @@ interface DayProps {
 
 export const Day: React.FC<DayProps> = ({ day }) => {
   const statusClass = day.completed ? 'day day-completed' : 'day day-incomplete'
-  return <div className={statusClass}>{day.title}</div>
+  return (
+    <div
+      data-tooltip-id="day-tooltip"
+      data-tooltip-content={day.title}
+      className={statusClass}
+    >
+      &nbsp;
+    </div>
+  )
 }

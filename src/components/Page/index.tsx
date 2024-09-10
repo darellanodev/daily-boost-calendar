@@ -5,6 +5,7 @@ import './page.css'
 import { Stats } from '../Stats'
 import { DayItem } from '../../models/DayItem'
 import { DatesProvider } from '../../utils/DatesProvider'
+import { Tooltip } from 'react-tooltip'
 
 type User = {
   name: string
@@ -28,7 +29,7 @@ export const Page: React.VFC = () => {
     '18/08/2024',
   ]
 
-  const totalWeeks = 4
+  const totalWeeks = 23
   const datesProvider = new DatesProvider(totalWeeks)
   datesProvider.calculate()
   const dates = datesProvider.dates
@@ -53,6 +54,7 @@ export const Page: React.VFC = () => {
         onLogout={() => setUser(undefined)}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
+      <Tooltip id="day-tooltip" />
       <article>
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
