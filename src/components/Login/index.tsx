@@ -16,14 +16,16 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (username === 'user' && password === 'pass') {
       localStorage.setItem('authenticated', 'true')
       onLogin()
+      setErrorMessage('')
     } else {
-      alert('Error in credentials')
+      setErrorMessage('Error in credentials')
     }
   }
 
@@ -64,6 +66,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
             <Button primary size="small" label="Login" type="submit" />
           </form>
+
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
         </section>
       </article>
     </div>

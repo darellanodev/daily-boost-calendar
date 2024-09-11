@@ -12,7 +12,8 @@
   max-width: 900px;
   color: #aaa;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #login-form {
@@ -47,4 +48,8 @@ input:focus {
 input::placeholder {
   color: #aaa;
   opacity: 1;
+}
+
+.error-message {
+  color: lightcoral;
 }
