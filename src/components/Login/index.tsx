@@ -37,7 +37,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
       />
       <article>
         <section>
-          <form onSubmit={handleSubmit}>
+          <form id="login-form" onSubmit={handleSubmit}>
             <div>
               <label>User:</label>
               <input

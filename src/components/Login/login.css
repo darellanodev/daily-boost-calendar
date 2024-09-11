@@ -15,11 +15,36 @@
   justify-content: center;
 }
 
-form {
+#login-form {
   border-radius: 10px;
   background-color: #3c3c3c;
   padding: 20px;
   width: 200px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   outline: solid #32a1ce;
+}
+
+#login-form > div {
+  padding-bottom: 10px;
+}
+
+input {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+input::placeholder {
+  color: #aaa;
+  opacity: 1;
 }
