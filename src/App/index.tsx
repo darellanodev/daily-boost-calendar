@@ -1,10 +1,37 @@
+import { Login } from '../components/Login'
 import { Page } from '../components/Page'
 import './app.css'
+import React, { useState, useEffect } from 'react'
 
-function App() {
+const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+
+  useEffect(() => {
+    const authStatus = localStorage.getItem('authenticated')
+    if (authStatus === 'true') {
+      setIsAuthenticated(true)
+    }
+  }, [])
+
+  const handleLogin = (): void => {
+    setIsAuthenticated(true)
+  }
+
+  const handleLogout = (): void => {
+    localStorage.removeItem('authenticated')
+    setIsAuthenticated(false)
+  }
+
   return (
     <div>
-      <Page />
+      {isAuthenticated ? (
+        <div>
+          <button onClick={handleLogout}>Logout</button>
+          <Page />
+        </div>
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
     </div>
   )
 }
