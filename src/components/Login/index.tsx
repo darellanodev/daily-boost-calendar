@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Header } from '../Header'
 import { Button } from '../Button'
 
+import './login.css'
+
 interface LoginProps {
   onLogin: () => void
 }
@@ -26,39 +28,44 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
   }
 
   return (
-    <div id="page-content">
+    <div id="login-content">
       <Header
         user={user}
         onLogin={() => setUser({ name: 'Jane Doe' })}
         onLogout={() => setUser(undefined)}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>User:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setUsername(e.target.value)
-            }
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
-            required
-          />
-        </div>
+      <article>
+        <section>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>User:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setUsername(e.target.value)
+                }
+                required
+              />
+            </div>
 
-        <Button primary size="small" label="Login" type="submit" />
-      </form>
+            <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
+                required
+              />
+            </div>
+
+            <Button primary size="small" label="Login" type="submit" />
+          </form>
+        </section>
+      </article>
     </div>
   )
 }
