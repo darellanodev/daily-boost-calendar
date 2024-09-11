@@ -7,6 +7,7 @@ interface ButtonProps {
   size?: 'small' | 'medium' | 'large'
   label: string
   onClick?: () => void
+  type?: 'button' | 'submit'
 }
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
   size = 'medium',
   backgroundColor,
   label,
+  type = 'button',
   ...props
 }: ButtonProps) => {
   const mode = primary
@@ -21,11 +23,11 @@ export const Button = ({
     : 'storybook-button--secondary'
   return (
     <button
-      type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(
         ' ',
       )}
       style={{ backgroundColor }}
+      type={type}
       {...props}
     >
       {label}
