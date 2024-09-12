@@ -16,22 +16,17 @@ type User = {
 export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [repeatedPassword, setRepeatedPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const checkRepeatedPassword = (repeatedPassword: string) => {
-    // todo
-    console.log(repeatedPassword)
-  }
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (username === 'user' && password === 'pass') {
-      localStorage.setItem('authenticated', 'true')
-      onSignup()
-      setErrorMessage('')
-    } else {
-      setErrorMessage('Error in credentials')
+
+    setErrorMessage('')
+
+    if (password !== repeatedPassword) {
+      setErrorMessage('Passwords do not match')
     }
   }
 
@@ -76,9 +71,9 @@ export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
               <label>Repeat the password:</label>
               <input
                 type="password"
-                value={password}
+                value={repeatedPassword}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  checkRepeatedPassword(e.target.value)
+                  setRepeatedPassword(e.target.value)
                 }
                 required
               />
