@@ -45,6 +45,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
 
       <article>
         <section>
+          <h3>Sign up</h3>
           <form id="signup-form" onSubmit={handleSubmit}>
             <div>
               <label>User:</label>
