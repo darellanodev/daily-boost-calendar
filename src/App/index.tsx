@@ -1,10 +1,12 @@
 import { Login } from '../components/Login'
 import { Page } from '../components/Page'
+import { Signup } from '../components/Signup'
 import './app.css'
 import React, { useState, useEffect } from 'react'
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [showSignup, setShowSignup] = useState<boolean>(false)
 
   useEffect(() => {
     const authStatus = localStorage.getItem('authenticated')
@@ -14,7 +16,7 @@ const App: React.FC = () => {
   }, [])
 
   const handleLogin = (): void => {
-    setIsAuthenticated(true)
+    setShowSignup(false)
   }
 
   const handleLogout = (): void => {
@@ -22,12 +24,18 @@ const App: React.FC = () => {
     setIsAuthenticated(false)
   }
 
+  const handleCreateAccount = (): void => {
+    setShowSignup(true)
+  }
+
   return (
     <div>
-      {isAuthenticated ? (
+      {showSignup ? (
+        <Signup onLogin={handleLogin} onSignup={handleCreateAccount} />
+      ) : isAuthenticated ? (
         <Page handleLogout={handleLogout} />
       ) : (
-        <Login onLogin={handleLogin} />
+        <Login onLogin={handleLogin} onSignup={handleCreateAccount} />
       )}
     </div>
   )

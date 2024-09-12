@@ -6,13 +6,14 @@ import './signup.css'
 
 interface SignupProps {
   onLogin: () => void
+  onSignup: () => void
 }
 
 type User = {
   name: string
 }
 
-export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
+export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
@@ -27,7 +28,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
     e.preventDefault()
     if (username === 'user' && password === 'pass') {
       localStorage.setItem('authenticated', 'true')
-      onLogin()
+      onSignup()
       setErrorMessage('')
     } else {
       setErrorMessage('Error in credentials')
@@ -38,7 +39,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
     <div id="signup-content">
       <Header
         user={user}
-        onLogin={() => setUser({ name: 'Jane Doe' })}
+        onLogin={onLogin}
         onLogout={() => setUser(undefined)}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />

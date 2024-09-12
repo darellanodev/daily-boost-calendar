@@ -6,13 +6,14 @@ import './login.css'
 
 interface LoginProps {
   onLogin: () => void
+  onSignup: () => void
 }
 
 type User = {
   name: string
 }
 
-export const Login: React.FC<LoginProps> = ({ onLogin }) => {
+export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
@@ -33,10 +34,11 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
     <div id="login-content">
       <Header
         user={user}
-        onLogin={() => setUser({ name: 'Jane Doe' })}
+        onLogin={onLogin}
         onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: 'Jane Doe' })}
+        onCreateAccount={onSignup}
       />
+
       <article>
         <section>
           <h3>Login</h3>
