@@ -27,7 +27,7 @@ const App: React.FC = () => {
       {isAuthenticated ? (
         <div>
           <button onClick={handleLogout}>Logout</button>
-          <Page />
+          <Page handleLogout={handleLogout} />
         </div>
       ) : (
         <Login onLogin={handleLogin} />

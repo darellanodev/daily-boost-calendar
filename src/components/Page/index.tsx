@@ -11,7 +11,11 @@ type User = {
   name: string
 }
 
-export const Page: React.VFC = () => {
+interface PageProps {
+  handleLogout: () => void
+}
+
+export const Page: React.FC<PageProps> = ({ handleLogout }) => {
   const [user, setUser] = React.useState<User>()
 
   let totalContributions = 0
@@ -46,12 +50,17 @@ export const Page: React.VFC = () => {
     }
   }
 
+  const onLogout = (): void => {
+    setUser(undefined)
+    handleLogout()
+  }
+
   return (
     <div id="page-content">
       <Header
         user={user}
         onLogin={() => setUser({ name: 'Jane Doe' })}
-        onLogout={() => setUser(undefined)}
+        onLogout={onLogout}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
       <Tooltip id="day-tooltip" />
