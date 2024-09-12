@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Calendar } from '../Calendar'
 import { Header } from '../Header'
 import './page.css'
@@ -54,6 +54,10 @@ export const Page: React.FC<PageProps> = ({ handleLogout }) => {
     setUser(undefined)
     handleLogout()
   }
+
+  useEffect(() => {
+    setUser({ name: 'Jane Doe' })
+  }, [])
 
   return (
     <div id="page-content">
