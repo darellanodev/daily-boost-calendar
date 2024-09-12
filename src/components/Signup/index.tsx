@@ -6,27 +6,31 @@ import './signup.css'
 
 interface SignupProps {
   onLogin: () => void
-  onSignup: () => void
 }
 
 type User = {
   name: string
 }
 
-export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
+export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [repeatedPassword, setRepeatedPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
   const [errorMessage, setErrorMessage] = useState<string>('')
 
+  const checkRepeatedPassword = (repeatedPassword: string) => {
+    // todo
+    console.log(repeatedPassword)
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    setErrorMessage('')
-
-    if (password !== repeatedPassword) {
-      setErrorMessage('Passwords do not match')
+    if (username === 'user' && password === 'pass') {
+      localStorage.setItem('authenticated', 'true')
+      onLogin()
+      setErrorMessage('')
+    } else {
+      setErrorMessage('Error in credentials')
     }
   }
 
@@ -34,14 +38,13 @@ export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
     <div id="signup-content">
       <Header
         user={user}
-        onLogin={onLogin}
+        onLogin={() => setUser({ name: 'Jane Doe' })}
         onLogout={() => setUser(undefined)}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
 
       <article>
         <section>
-          <h3>Sign up</h3>
           <form id="signup-form" onSubmit={handleSubmit}>
             <div>
               <label>User:</label>
@@ -71,9 +74,9 @@ export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
               <label>Repeat the password:</label>
               <input
                 type="password"
-                value={repeatedPassword}
+                value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setRepeatedPassword(e.target.value)
+                  checkRepeatedPassword(e.target.value)
                 }
                 required
               />
