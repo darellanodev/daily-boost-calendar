@@ -19,14 +19,42 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
   const [user, setUser] = React.useState<User>()
   const [errorMessage, setErrorMessage] = useState<string>('')
 
+  const isValidUser = (
+    users: any,
+    username: string,
+    password: string,
+  ): boolean => {
+    for (let user of users) {
+      if (user.username === username) {
+        if (user.password === password) {
+          return true
+        } else {
+          return false
+        }
+      }
+    }
+    return false
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (username === 'user' && password === 'pass') {
-      localStorage.setItem('authenticated', 'true')
-      onLogin()
-      setErrorMessage('')
-    } else {
+
+    let users: string | null = localStorage.getItem('users')
+    if (users === null) {
       setErrorMessage('Error in credentials')
+    } else {
+      const usersObj = JSON.parse(users)
+      if (usersObj.length === 0) {
+        setErrorMessage('Error in credentials')
+      } else if (usersObj.length > 0) {
+        if (isValidUser(usersObj, username, password)) {
+          localStorage.setItem('authenticated', 'true')
+          onLogin()
+          setErrorMessage('')
+        } else {
+          setErrorMessage('Error in credentials')
+        }
+      }
     }
   }
 
