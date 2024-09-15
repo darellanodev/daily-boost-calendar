@@ -43,7 +43,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
           <h3>Sign up</h3>
           <form id="signup-form" onSubmit={handleSubmit}>
             <div>
-              <label>User:</label>
+              <label>Username:</label>
               <input
                 type="text"
                 value={username}
