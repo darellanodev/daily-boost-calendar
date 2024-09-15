@@ -6,14 +6,13 @@ import './signup.css'
 
 interface SignupProps {
   onLogin: () => void
-  onSignup: () => void
 }
 
 type User = {
   name: string
 }
 
-export const Signup: React.FC<SignupProps> = ({ onSignup, onLogin }) => {
+export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [repeatedPassword, setRepeatedPassword] = useState<string>('')
