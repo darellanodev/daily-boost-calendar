@@ -7,14 +7,21 @@ export class UsersJSON {
     this.#initialUsers = initialUsers
   }
   create(userJSON: string): string {
-    let users = '[]'
-    if (this.#initialUsers === null) {
+    let users = this.#initialUsers
+    if (users === null) {
       users = '[]'
     }
 
     let finalUsersJSON = ''
+
     if (users === '[]') {
       finalUsersJSON = '[' + userJSON + ']'
+    } else {
+      if (JSON.parse(users).length > 0) {
+        finalUsersJSON = users.slice(0, -2) + '},' + userJSON + ']'
+      } else {
+        finalUsersJSON = '[' + userJSON + ']'
+      }
     }
 
     return finalUsersJSON

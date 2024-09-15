@@ -31,9 +31,6 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
       return
     }
 
-    // clear users (for testing purposes)
-    localStorage.setItem('users', '')
-
     // load users from localStorage
     let users: string | null = localStorage.getItem('users')
     const usersJSON = new UsersJSON(users)
