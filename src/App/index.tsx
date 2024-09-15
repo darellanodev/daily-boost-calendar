@@ -15,8 +15,14 @@ const App: React.FC = () => {
     }
   }, [])
 
-  const handleLogin = (): void => {
+  const handleShowLogin = (): void => {
     setShowSignup(false)
+  }
+
+  const handleLogin = (): void => {
+    // todo
+    setIsAuthenticated(true)
+    console.log('Login successful')
   }
 
   const handleLogout = (): void => {
@@ -24,18 +30,18 @@ const App: React.FC = () => {
     setIsAuthenticated(false)
   }
 
-  const handleCreateAccount = (): void => {
+  const handleShowSignup = (): void => {
     setShowSignup(true)
   }
 
   return (
     <div>
       {showSignup ? (
-        <Signup onLogin={handleLogin} onSignup={handleCreateAccount} />
+        <Signup onLogin={handleShowLogin} />
       ) : isAuthenticated ? (
-        <Page handleLogout={handleLogout} />
+        <Page onLogout={handleLogout} />
       ) : (
-        <Login onLogin={handleLogin} onSignup={handleCreateAccount} />
+        <Login onLogin={handleLogin} onSignup={handleShowSignup} />
       )}
     </div>
   )

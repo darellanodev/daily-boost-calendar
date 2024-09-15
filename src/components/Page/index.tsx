@@ -12,10 +12,10 @@ type User = {
 }
 
 interface PageProps {
-  handleLogout: () => void
+  onLogout: () => void
 }
 
-export const Page: React.FC<PageProps> = ({ handleLogout }) => {
+export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const [user, setUser] = React.useState<User>()
 
   let totalContributions = 0
@@ -50,9 +50,9 @@ export const Page: React.FC<PageProps> = ({ handleLogout }) => {
     }
   }
 
-  const onLogout = (): void => {
+  const handleLogout = (): void => {
     setUser(undefined)
-    handleLogout()
+    onLogout()
   }
 
   useEffect(() => {
@@ -61,10 +61,11 @@ export const Page: React.FC<PageProps> = ({ handleLogout }) => {
 
   return (
     <div id="page-content">
+      <Tooltip id="my-tooltip" />
       <Header
         user={user}
         onLogin={() => setUser({ name: 'Jane Doe' })}
-        onLogout={onLogout}
+        onLogout={handleLogout}
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
       <Tooltip id="day-tooltip" />
