@@ -3,12 +3,15 @@ import { Header } from '../Header'
 import { Button } from '../Button'
 
 import './signup.css'
+import { User } from '../../models/User'
+import { Calendar } from '../../models/Calendar'
+import { UsersJSON } from '../../models/UsersJSON'
 
 interface SignupProps {
   onLogin: () => void
 }
 
-type User = {
+type CurrentUser = {
   name: string
 }
 
@@ -16,25 +19,36 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [repeatedPassword, setRepeatedPassword] = useState<string>('')
-  const [user, setUser] = React.useState<User>()
+  const [currentUser, setCurrentUser] = React.useState<CurrentUser>()
   const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     setErrorMessage('')
-
     if (password !== repeatedPassword) {
       setErrorMessage('Passwords do not match')
+      return
     }
+
+    // clear users (for testing purposes)
+    localStorage.setItem('users', '')
+
+    // load users from localStorage
+    let users: string | null = localStorage.getItem('users')
+    const usersJSON = new UsersJSON(users)
+    const calendars: Calendar[] = []
+    const newUser = new User(username, password, 123, calendars)
+    const finalUsersJSON = usersJSON.create(newUser.json)
+    localStorage.setItem('users', finalUsersJSON)
   }
 
   return (
     <div id="signup-content">
       <Header
-        user={user}
+        user={currentUser}
         onLogin={onLogin}
-        onLogout={() => setUser(undefined)}
+        onLogout={() => setCurrentUser(undefined)}
         onCreateAccount={() => {}}
       />
 
