@@ -35,7 +35,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
         user={user}
         onLogin={onLogin}
         onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: 'Jane Doe' })}
+        onCreateAccount={() => {}}
       />
 
       <article>

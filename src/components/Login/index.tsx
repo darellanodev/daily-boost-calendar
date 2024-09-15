@@ -34,7 +34,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
     <div id="login-content">
       <Header
         user={user}
-        onLogin={onLogin}
+        onLogin={() => {}}
         onLogout={() => setUser(undefined)}
         onCreateAccount={onSignup}
       />
