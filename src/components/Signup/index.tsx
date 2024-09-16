@@ -31,9 +31,15 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
       return
     }
 
-    // load users from localStorage
     let users: string | null = localStorage.getItem('users')
     const usersJSON = new UsersJSON(users)
+
+    // verify if the new username already exists
+    if (usersJSON.exists(username)) {
+      setErrorMessage('The username already exists')
+      return
+    }
+    // create new user
     const calendars: Calendar[] = []
     const newUser = new User(username, password, 123, calendars)
     const finalUsersJSON = usersJSON.create(newUser.json)

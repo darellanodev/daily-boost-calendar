@@ -8,7 +8,7 @@ export class UsersJSON {
   }
   create(userJSON: string): string {
     let users = this.#initialUsers
-    if (users === null) {
+    if (users === null || users === '') {
       users = '[]'
     }
 
@@ -25,5 +25,23 @@ export class UsersJSON {
     }
 
     return finalUsersJSON
+  }
+  exists(username: string): boolean {
+    if (this.#initialUsers === null || this.#initialUsers === '') {
+      return false
+    }
+
+    const users = JSON.parse(this.#initialUsers)
+
+    if (users.length === 0) {
+      return false
+    }
+
+    for (let user of users) {
+      if (user.username === username) {
+        return true
+      }
+    }
+    return false
   }
 }
