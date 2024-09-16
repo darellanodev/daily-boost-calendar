@@ -5,7 +5,7 @@ import { Button } from '../Button'
 import './signup.css'
 import { User } from '../../models/User'
 import { Calendar } from '../../models/Calendar'
-import { UsersJSON } from '../../models/UsersJSON'
+import { UsersManager } from '../../models/UsersManager'
 
 interface SignupProps {
   onLogin: () => void
@@ -31,18 +31,20 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
       return
     }
 
-    let users: string | null = localStorage.getItem('users')
-    const usersJSON = new UsersJSON(users)
+    let usersJSON: string | null = localStorage.getItem('users')
+    const usersManager = new UsersManager(usersJSON)
 
     // verify if the new username already exists
-    if (usersJSON.exists(username)) {
+    if (usersManager.exists(username)) {
       setErrorMessage('The username already exists')
       return
     }
+
     // create new user
     const calendars: Calendar[] = []
     const newUser = new User(username, password, 123, calendars)
-    const finalUsersJSON = usersJSON.create(newUser.json)
+
+    const finalUsersJSON = usersManager.create(newUser.json)
     localStorage.setItem('users', finalUsersJSON)
   }
 

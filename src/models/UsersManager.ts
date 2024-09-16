@@ -1,7 +1,7 @@
 import { Calendar } from './Calendar'
 import { User } from './User'
 
-export class UsersJSON {
+export class UsersManager {
   #initialUsers: string | null
   constructor(initialUsers: string | null) {
     this.#initialUsers = initialUsers

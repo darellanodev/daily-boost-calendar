@@ -1,4 +1,4 @@
-import { UsersJSON } from '../../src/models/UsersJSON'
+import { UsersManager } from '../../src/models/UsersManager'
 import { User } from '../../src/models/User'
 
 const getNewUser = () => {
@@ -10,9 +10,9 @@ const getNewUser = () => {
 test('create the json, when the users is "[]", returns the expected json', () => {
   const currentUsers = '[]'
 
-  const usersJSON = new UsersJSON(currentUsers)
+  const userManager = new UsersManager(currentUsers)
   const user = getNewUser()
-  const result = usersJSON.create(user.json)
+  const result = userManager.create(user.json)
 
   const expected = `[{"username": "john", "password": "myPass", "id": 152, "calendars": []}]`
   expect(result).toBe(expected)
@@ -22,9 +22,9 @@ test('create the json, when there is one user, returns the expected json', () =>
   const currentUsers =
     '[{"username": "mary", "password": "maryPass", "id": 28, "calendars": []}]'
 
-  const usersJSON = new UsersJSON(currentUsers)
+  const userManager = new UsersManager(currentUsers)
   const user = getNewUser()
-  const result = usersJSON.create(user.json)
+  const result = userManager.create(user.json)
 
   const expected = `[{"username": "mary", "password": "maryPass", "id": 28, "calendars": []},{"username": "john", "password": "myPass", "id": 152, "calendars": []}]`
   expect(result).toBe(expected)
@@ -34,8 +34,8 @@ test('exists, when the new user has a username that already exists in the user d
   const currentUsers =
     '[{"username": "john", "password": "maryPass", "id": 28, "calendars": []}]'
 
-  const usersJSON = new UsersJSON(currentUsers)
-  const result = usersJSON.exists('john')
+  const userManager = new UsersManager(currentUsers)
+  const result = userManager.exists('john')
 
   expect(result).toBeTruthy()
 })
@@ -44,8 +44,8 @@ test('exists, when the new user has a username that does not exists yet in the d
   const currentUsers =
     '[{"username": "john", "password": "maryPass", "id": 28, "calendars": []}]'
 
-  const usersJSON = new UsersJSON(currentUsers)
-  const result = usersJSON.exists('mary')
+  const userManager = new UsersManager(currentUsers)
+  const result = userManager.exists('mary')
 
   expect(result).toBeFalsy()
 })
