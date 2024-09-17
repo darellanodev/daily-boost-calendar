@@ -25,6 +25,6 @@ test('get json, when an User object is created, returns the expected json', () =
   const user = new User('john', 'myPass', userId, calendars)
 
   const result = user.json
-  const expected = `{"username": "john", "password": "myPass", "id": 152, "calendars": [{"title": "Test Calendar 1", "activeDays": ['08/05/2024','09/05/2024','10/05/2024']},{"title": "Test Calendar 2", "activeDays": ['04/05/2024','05/05/2024','06/05/2024']}]}`
+  const expected = `{"username": "john", "password": "myPass", "id": 152, "calendars": [{"title": "Test Calendar 1", "activeDays": ["08/05/2024","09/05/2024","10/05/2024"]},{"title": "Test Calendar 2", "activeDays": ["04/05/2024","05/05/2024","06/05/2024"]}]}`
   expect(result).toBe(expected)
 })
