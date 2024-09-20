@@ -1,0 +1,21 @@
+.first-run-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 20vh;
+  text-align: center;
+}
+
+.first-run-container > div {
+  background-color: #444;
+  padding: 10px;
+  border-radius: 8px;
+  border-color: lightgray;
+  border-style: solid;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

@@ -46,7 +46,6 @@ export class UsersManager {
   }
 
   getCalendars(username: string): CalendarItem[] {
-
     if (this.#initialUsers === null || this.#initialUsers === '') {
       return []
     }
@@ -64,6 +63,5 @@ export class UsersManager {
     }
 
     return []
-  
   }
 }
