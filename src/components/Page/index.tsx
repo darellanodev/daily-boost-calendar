@@ -17,16 +17,15 @@ interface PageProps {
 
 export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const [user, setUser] = React.useState<User>()
-  const [calendarTitle, setCalendarTitle] = React.useState(
-    'Gym Activity Calendar',
-  )
-  const [daysItems, setDaysItems] = React.useState<DayItem[]>([])
 
   let totalContributions = 0
   let currentStreak = 0
   let longestStreak = 0
 
-  const calendarGymActiveDays = [
+  const activeDaysList = [
+    '06/08/2024',
+    '07/08/2024',
+    '09/08/2024',
     '11/08/2024',
     '13/08/2024',
     '14/08/2024',
@@ -34,32 +33,23 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     '18/08/2024',
   ]
 
-  const calendarEnglishActiveDays = [
-    '15/08/2024',
-    '16/08/2024',
-    '17/08/2024',
-    '18/08/2024',
-  ]
+  const totalWeeks = 23
+  const datesProvider = new DatesProvider(totalWeeks)
+  datesProvider.calculate()
+  const dates = datesProvider.dates
 
-  const calculate = (activeDays: string[]) => {
-    const totalWeeks = 23
-    const datesProvider = new DatesProvider(totalWeeks)
-    datesProvider.calculate()
-    const dates = datesProvider.dates
-
-    // example days
-    const daysItems: DayItem[] = []
-    let i = 1
-    for (const date of dates) {
-      let completed = activeDays.includes(date)
-      daysItems.push(new DayItem(i, date, completed))
-      i++
-      if (completed) {
-        totalContributions++
-      }
+  // example days
+  const daysItems: DayItem[] = []
+  let i = 1
+  for (const date of dates) {
+    let completed = activeDaysList.includes(date)
+    daysItems.push(new DayItem(i, date, completed))
+    i++
+    if (completed) {
+      totalContributions++
     }
-    return daysItems
   }
+
   const handleLogout = (): void => {
     setUser(undefined)
     onLogout()
@@ -70,18 +60,7 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
       const daysItems = calculate(calendarEnglishActiveDays)
       setDaysItems(daysItems)
     } else {
-      setCalendarTitle('Gym Activity Calendar')
-      const daysItems = calculate(calendarGymActiveDays)
-      setDaysItems(daysItems)
-    }
-  }
-
-  // Calculate days for calendarGymActiveDays when the component mounts
-  useEffect(() => {
-    const initialDaysItems = calculate(calendarGymActiveDays)
-    setDaysItems(initialDaysItems)
-    setUser({ name: 'Jane Doe' })
-  }, []) // Empty dependency array means this runs once when the component mounts
+  }, [])
 
   return (
     <div id="page-content">
@@ -95,10 +74,9 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
       <Tooltip id="day-tooltip" />
       <article>
         <section>
-          <button onClick={changeCalendar}>Change calendar</button>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
           <div className="taskslists">
-            <Calendar title={calendarTitle} days={daysItems} />
+            <Calendar title="Calendar" days={daysItems} />
           </div>
           <Stats
             totalContributions={totalContributions}
