@@ -6,6 +6,8 @@ import { Stats } from '../Stats'
 import { DayItem } from '../../models/DayItem'
 import { DatesProvider } from '../../utils/DatesProvider'
 import { Tooltip } from 'react-tooltip'
+import { UsersManager } from '../../models/UsersManager'
+import { CalendarItem } from '../../models/CalendarItem'
 
 type User = {
   name: string
@@ -17,6 +19,9 @@ interface PageProps {
 
 export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const [user, setUser] = React.useState<User>()
+  const [calendarItem, setCalendarItem] = React.useState<CalendarItem | null>(
+    null,
+  )
 
   let totalContributions = 0
   let currentStreak = 0
@@ -56,7 +61,29 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
   }
 
   useEffect(() => {
+    const usersJSON: string | null = localStorage.getItem('users')
     const username = localStorage.getItem('username')
+
+    const usersManager = new UsersManager(usersJSON)
+
+    if (username === null) {
+      throw new Error('Error: username is null')
+    }
+
+    const calendars: CalendarItem[] = usersManager.getCalendars(username)
+
+    if (calendars.length === 0) {
+      throw new Error('Error: No calendars found')
+    }
+
+    if (calendars[0] === null || calendars[0] === undefined) {
+      throw new Error('Error: calendars[0] is null')
+    }
+
+    const currentCalendar: CalendarItem = calendars[0]
+
+    setCalendarItem(currentCalendar)
+
     if (username) {
       setUser({ name: username })
     } else {
@@ -78,7 +105,7 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
           <div className="taskslists">
-            <Calendar title="Calendar" days={daysItems} />
+            <Calendar calendarItem={calendarItem} days={daysItems} />
           </div>
           <Stats
             totalContributions={totalContributions}

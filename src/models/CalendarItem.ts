@@ -18,4 +18,8 @@ export class CalendarItem {
       '}'
     )
   }
+
+  get title(): string {
+    return this.#title
+  }
 }

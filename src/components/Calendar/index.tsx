@@ -1,16 +1,19 @@
 import './calendar.css'
 import { Day } from '../Day'
 import { DayItem } from '../../models/DayItem'
+import { CalendarItem } from '../../models/CalendarItem'
 
 interface CalendarProps {
-  title: string
+  calendarItem: CalendarItem | null
   days: DayItem[]
 }
 
-export function Calendar({ title, days }: CalendarProps) {
+export const Calendar: React.FC<CalendarProps> = ({ calendarItem, days }) => {
   return (
     <div className="calendar-card">
-      <div className="calendar-card-header">{title}</div>
+      <div className="calendar-card-header">
+        {calendarItem ? calendarItem.title : 'not defined'}
+      </div>
       <div className="calendar-card-body">
         {days.map((day) => (
           <Day key={day.id} day={day} />
