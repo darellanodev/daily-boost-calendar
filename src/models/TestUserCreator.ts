@@ -1,5 +1,5 @@
 import { ActiveDays } from './ActiveDays'
-import { Calendar } from './Calendar'
+import { CalendarItem } from './CalendarItem'
 import { User } from './User'
 import { UsersManager } from './UsersManager'
 
@@ -13,7 +13,7 @@ export class TestUserCreator {
 
     // calendars
 
-    const calendars: Calendar[] = this.#getCalendars()
+    const calendars: CalendarItem[] = this.#getCalendars()
     const newUser = new User(username, password, userid, calendars)
 
     const finalUsersJSON = usersManager.create(newUser.json)
@@ -107,16 +107,16 @@ export class TestUserCreator {
     return ['14/09/2024', '15/09/2024', '16/09/2024', '17/09/2024']
   }
 
-  #getCalendars(): Calendar[] {
+  #getCalendars(): CalendarItem[] {
     const calendar1ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar1(),
     )
-    const calendar1 = new Calendar('Gym', calendar1ActiveDays)
+    const calendar1 = new CalendarItem('Gym', calendar1ActiveDays)
 
     const calendar2ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar1(),
     )
-    const calendar2 = new Calendar(
+    const calendar2 = new CalendarItem(
       'English Study Language',
       calendar2ActiveDays,
     )
@@ -124,12 +124,12 @@ export class TestUserCreator {
     const calendar3ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar1(),
     )
-    const calendar3 = new Calendar('Projects', calendar3ActiveDays)
+    const calendar3 = new CalendarItem('Projects', calendar3ActiveDays)
 
     const calendar4ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar1(),
     )
-    const calendar4 = new Calendar('Katas', calendar4ActiveDays)
+    const calendar4 = new CalendarItem('Katas', calendar4ActiveDays)
 
     return [calendar1, calendar2, calendar3, calendar4]
   }
