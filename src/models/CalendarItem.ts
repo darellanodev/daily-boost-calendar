@@ -1,6 +1,6 @@
 import { ActiveDays } from './ActiveDays'
 
-export class Calendar {
+export class CalendarItem {
   #title: string
   #activeDays: ActiveDays
   constructor(title: string, activeDays: ActiveDays) {

@@ -1,15 +1,15 @@
-import { Calendar } from './Calendar'
+import { CalendarItem } from './CalendarItem'
 
 export class User {
   #username: string
   #password: string
   #id: number
-  #calendars: Calendar[]
+  #calendars: CalendarItem[]
   constructor(
     username: string,
     password: string,
     id: number,
-    calendars: Calendar[] = [],
+    calendars: CalendarItem[] = [],
   ) {
     this.#username = username
     this.#password = password

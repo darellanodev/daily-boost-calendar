@@ -1,4 +1,4 @@
-import { Calendar } from './Calendar'
+import { CalendarItem } from './CalendarItem'
 import { User } from './User'
 
 export class UsersJSON {

@@ -4,7 +4,7 @@ import { Button } from '../Button'
 
 import './signup.css'
 import { User } from '../../models/User'
-import { Calendar } from '../../models/Calendar'
+import { CalendarItem } from '../../models/CalendarItem'
 import { UsersJSON } from '../../models/UsersJSON'
 
 interface SignupProps {
@@ -34,7 +34,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
     // load users from localStorage
     let users: string | null = localStorage.getItem('users')
     const usersJSON = new UsersJSON(users)
-    const calendars: Calendar[] = []
+    const calendars: CalendarItem[] = []
     const newUser = new User(username, password, 123, calendars)
     const finalUsersJSON = usersJSON.create(newUser.json)
     localStorage.setItem('users', finalUsersJSON)
