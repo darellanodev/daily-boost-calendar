@@ -49,6 +49,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
       } else if (usersObj.length > 0) {
         if (isValidUser(usersObj, username, password)) {
           localStorage.setItem('authenticated', 'true')
+          localStorage.setItem('username', username)
           onLogin()
           setErrorMessage('')
         } else {

@@ -54,12 +54,14 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     setUser(undefined)
     onLogout()
   }
-  const changeCalendar = () => {
-    if (calendarTitle === 'Gym Activity Calendar') {
-      setCalendarTitle('English Language Study Calendar')
-      const daysItems = calculate(calendarEnglishActiveDays)
-      setDaysItems(daysItems)
+
+  useEffect(() => {
+    const username = localStorage.getItem('username')
+    if (username) {
+      setUser({ name: username })
     } else {
+      setUser({ name: 'unknown' })
+    }
   }, [])
 
   return (

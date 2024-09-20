@@ -27,6 +27,7 @@ const App: React.FC = () => {
 
   const handleLogout = (): void => {
     localStorage.removeItem('authenticated')
+    localStorage.removeItem('username')
     setIsAuthenticated(false)
   }
 
