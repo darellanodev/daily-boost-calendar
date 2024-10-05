@@ -38,22 +38,39 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     '18/08/2024',
   ]
 
-  const totalWeeks = 23
-  const datesProvider = new DatesProvider(totalWeeks)
-  datesProvider.calculate()
-  const dates = datesProvider.dates
+  const getDates = () => {
+    const totalWeeks = 23
+    const datesProvider = new DatesProvider(totalWeeks)
+    datesProvider.calculate()
+    return datesProvider.dates
+  }
+
+  const getDayItems = (dates: string[]) => {
+    const daysItems: DayItem[] = []
+    let i = 1
+    for (const date of dates) {
+      let completed = activeDaysList.includes(date)
+      daysItems.push(new DayItem(i, date, completed))
+      i++
+    }
+    return daysItems
+  }
+
+  const getTotalContributions = (daysItem: DayItem[]) => {
+    let totalContributions = 0
+    for (const dayItem of daysItem) {
+      if (dayItem.completed) {
+        totalContributions++
+      }
+    }
+    return totalContributions
+  }
+
+  const dates = getDates()
+  const daysItems = getDayItems(dates)
+  totalContributions = getTotalContributions(daysItems)
 
   // example days
-  const daysItems: DayItem[] = []
-  let i = 1
-  for (const date of dates) {
-    let completed = activeDaysList.includes(date)
-    daysItems.push(new DayItem(i, date, completed))
-    i++
-    if (completed) {
-      totalContributions++
-    }
-  }
 
   const handleLogout = (): void => {
     setUser(undefined)
@@ -81,6 +98,7 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     }
 
     const currentCalendar: CalendarItem = calendars[0]
+    console.log(currentCalendar)
 
     setCalendarItem(currentCalendar)
 
