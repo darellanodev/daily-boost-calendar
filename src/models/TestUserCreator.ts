@@ -114,7 +114,7 @@ export class TestUserCreator {
     const calendar1 = new CalendarItem('Gym', calendar1ActiveDays)
 
     const calendar2ActiveDays = new ActiveDays(
-      this.#getActiveDaysForCalendar1(),
+      this.#getActiveDaysForCalendar2(),
     )
     const calendar2 = new CalendarItem(
       'English Study Language',
@@ -122,12 +122,12 @@ export class TestUserCreator {
     )
 
     const calendar3ActiveDays = new ActiveDays(
-      this.#getActiveDaysForCalendar1(),
+      this.#getActiveDaysForCalendar3(),
     )
     const calendar3 = new CalendarItem('Projects', calendar3ActiveDays)
 
     const calendar4ActiveDays = new ActiveDays(
-      this.#getActiveDaysForCalendar1(),
+      this.#getActiveDaysForCalendar4(),
     )
     const calendar4 = new CalendarItem('Katas', calendar4ActiveDays)
 
