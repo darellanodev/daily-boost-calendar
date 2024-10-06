@@ -67,7 +67,9 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const handleNextCalendar = () => {
     setIdCalendar((prevIdCalendar) => {
       const nextIdCalendar = prevIdCalendar + 1
-
+      if (calendars[nextIdCalendar] === undefined) {
+        return prevIdCalendar
+      }
       const currentCalendar: CalendarItem = calendars[nextIdCalendar]
       setCalendarItem(currentCalendar)
 
