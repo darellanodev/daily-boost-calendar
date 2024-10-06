@@ -64,20 +64,36 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     onLogout()
   }
 
+  const loadCalendar = (idCalendar: number) => {
+    const currentCalendar: CalendarItem = calendars[idCalendar]
+    setCalendarItem(currentCalendar)
+
+    const dates = getDates()
+    const activeDays = getActiveDaysFromCalendar(idCalendar, calendars)
+    const daysItems = getDayItems(dates, activeDays.days)
+    setDayItems(daysItems)
+    setTotalContributions(getTotalContributions(daysItems))
+  }
+
   const handleNextCalendar = () => {
     setIdCalendar((prevIdCalendar) => {
       const nextIdCalendar = prevIdCalendar + 1
       if (calendars[nextIdCalendar] === undefined) {
         return prevIdCalendar
       }
-      const currentCalendar: CalendarItem = calendars[nextIdCalendar]
-      setCalendarItem(currentCalendar)
+      loadCalendar(nextIdCalendar)
 
-      const dates = getDates()
-      const activeDays = getActiveDaysFromCalendar(nextIdCalendar, calendars)
-      const daysItems = getDayItems(dates, activeDays.days)
-      setDayItems(daysItems)
-      setTotalContributions(getTotalContributions(daysItems))
+      return nextIdCalendar
+    })
+  }
+
+  const handlePreviousCalendar = () => {
+    setIdCalendar((prevIdCalendar) => {
+      const nextIdCalendar = prevIdCalendar - 1
+      if (calendars[nextIdCalendar] === undefined) {
+        return prevIdCalendar
+      }
+      loadCalendar(nextIdCalendar)
 
       return nextIdCalendar
     })
@@ -141,9 +157,8 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
       <article>
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
-          <button id="btnNextCalendar" onClick={handleNextCalendar}>
-            Next Calendar
-          </button>
+          <button onClick={handlePreviousCalendar}>◀️ Previous Calendar</button>
+          <button onClick={handleNextCalendar}>Next Calendar ▶️</button>
           <div className="taskslists">
             <Calendar calendarItem={calendarItem} days={daysItems} />
           </div>
