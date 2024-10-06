@@ -25,6 +25,8 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
   )
   const [daysItems, setDayItems] = React.useState<DayItem[]>([])
   const [totalContributions, setTotalContributions] = React.useState<number>(0)
+  const [calendars, setCalendars] = React.useState<CalendarItem[]>([])
+  const [idCalendar, setIdCalendar] = React.useState<number>(0)
 
   let currentStreak = 0
   let longestStreak = 0
@@ -62,8 +64,33 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     onLogout()
   }
 
+  const handleNextCalendar = () => {
+    setIdCalendar((prevIdCalendar) => {
+      const nextIdCalendar = prevIdCalendar + 1
+
+      const currentCalendar: CalendarItem = calendars[nextIdCalendar]
+      setCalendarItem(currentCalendar)
+
+      const dates = getDates()
+      const activeDays = getActiveDaysFromCalendar(nextIdCalendar, calendars)
+      const daysItems = getDayItems(dates, activeDays.days)
+      setDayItems(daysItems)
+      setTotalContributions(getTotalContributions(daysItems))
+
+      return nextIdCalendar
+    })
+  }
+
+  const getActiveDaysFromCalendar = (id: number, calendars: CalendarItem[]) => {
+    if (Array.isArray(calendars[id].activeDays)) {
+      const aux: string[] = calendars[id].activeDays as string[]
+      return new ActiveDays(aux)
+    } else {
+      throw new Error('Error: activeDays is not an array')
+    }
+  }
+
   useEffect(() => {
-    console.log('hi')
     const usersJSON: string | null = localStorage.getItem('users')
     const username = localStorage.getItem('username')
 
@@ -74,24 +101,17 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     }
 
     const calendars: CalendarItem[] = usersManager.getCalendars(username)
+    setCalendars(calendars)
 
     if (calendars.length === 0) {
       throw new Error('Error: No calendars found')
     }
 
-    if (calendars[0] === null || calendars[0] === undefined) {
-      throw new Error('Error: calendars[0] is null')
+    if (calendars[idCalendar] === null || calendars[idCalendar] === undefined) {
+      throw new Error('Error: calendars[idCalendar] is null')
     }
 
-    let activeDays: ActiveDays
-    if (Array.isArray(calendars[0].activeDays)) {
-      const aux: string[] = calendars[0].activeDays as string[]
-      activeDays = new ActiveDays(aux)
-    } else {
-      throw new Error('Error: activeDays is not an array')
-    }
-
-    const currentCalendar: CalendarItem = calendars[0]
+    const currentCalendar: CalendarItem = calendars[idCalendar]
     setCalendarItem(currentCalendar)
 
     if (username) {
@@ -101,6 +121,7 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     }
 
     const dates = getDates()
+    const activeDays = getActiveDaysFromCalendar(idCalendar, calendars)
     const daysItems = getDayItems(dates, activeDays.days)
     setDayItems(daysItems)
     setTotalContributions(getTotalContributions(daysItems))
@@ -118,6 +139,9 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
       <article>
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
+          <button id="btnNextCalendar" onClick={handleNextCalendar}>
+            Next Calendar
+          </button>
           <div className="taskslists">
             <Calendar calendarItem={calendarItem} days={daysItems} />
           </div>
