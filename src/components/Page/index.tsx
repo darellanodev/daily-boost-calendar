@@ -108,7 +108,6 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
 
   return (
     <div id="page-content">
-      <Tooltip id="my-tooltip" />
       <Header
         user={user}
         onLogin={() => setUser({ name: 'Jane Doe' })}
