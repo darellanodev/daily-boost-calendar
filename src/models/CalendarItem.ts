@@ -22,4 +22,8 @@ export class CalendarItem {
   get title(): string {
     return this.#title
   }
+
+  get activeDays(): ActiveDays {
+    return this.#activeDays
+  }
 }
