@@ -8,6 +8,7 @@ import { DatesProvider } from '../../utils/DatesProvider'
 import { Tooltip } from 'react-tooltip'
 import { UsersManager } from '../../models/UsersManager'
 import { CalendarItem } from '../../models/CalendarItem'
+import { ActiveDays } from '../../models/ActiveDays'
 
 type User = {
   name: string
@@ -22,21 +23,11 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const [calendarItem, setCalendarItem] = React.useState<CalendarItem | null>(
     null,
   )
+  const [daysItems, setDayItems] = React.useState<DayItem[]>([])
+  const [totalContributions, setTotalContributions] = React.useState<number>(0)
 
-  let totalContributions = 0
   let currentStreak = 0
   let longestStreak = 0
-
-  const activeDaysList = [
-    '06/08/2024',
-    '07/08/2024',
-    '09/08/2024',
-    '11/08/2024',
-    '13/08/2024',
-    '14/08/2024',
-    '16/08/2024',
-    '18/08/2024',
-  ]
 
   const getDates = () => {
     const totalWeeks = 23
@@ -45,11 +36,11 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     return datesProvider.dates
   }
 
-  const getDayItems = (dates: string[]) => {
+  const getDayItems = (dates: string[], activeDays: string[]) => {
     const daysItems: DayItem[] = []
     let i = 1
     for (const date of dates) {
-      let completed = activeDaysList.includes(date)
+      let completed = activeDays.includes(date)
       daysItems.push(new DayItem(i, date, completed))
       i++
     }
@@ -66,18 +57,13 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     return totalContributions
   }
 
-  const dates = getDates()
-  const daysItems = getDayItems(dates)
-  totalContributions = getTotalContributions(daysItems)
-
-  // example days
-
   const handleLogout = (): void => {
     setUser(undefined)
     onLogout()
   }
 
   useEffect(() => {
+    console.log('hi')
     const usersJSON: string | null = localStorage.getItem('users')
     const username = localStorage.getItem('username')
 
@@ -97,9 +83,15 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
       throw new Error('Error: calendars[0] is null')
     }
 
-    const currentCalendar: CalendarItem = calendars[0]
-    console.log(currentCalendar)
+    let activeDays: ActiveDays
+    if (Array.isArray(calendars[0].activeDays)) {
+      const aux: string[] = calendars[0].activeDays as string[]
+      activeDays = new ActiveDays(aux)
+    } else {
+      throw new Error('Error: activeDays is not an array')
+    }
 
+    const currentCalendar: CalendarItem = calendars[0]
     setCalendarItem(currentCalendar)
 
     if (username) {
@@ -107,6 +99,11 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
     } else {
       setUser({ name: 'unknown' })
     }
+
+    const dates = getDates()
+    const daysItems = getDayItems(dates, activeDays.days)
+    setDayItems(daysItems)
+    setTotalContributions(getTotalContributions(daysItems))
   }, [])
 
   return (
