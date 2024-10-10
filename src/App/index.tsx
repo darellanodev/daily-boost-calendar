@@ -1,5 +1,6 @@
 import { FirstRun } from '../components/FirstRun'
 import { Login } from '../components/Login'
+import { Menu } from '../components/Menu'
 import { Page } from '../components/Page'
 import { Signup } from '../components/Signup'
 import { TestUserCreator } from '../models/TestUserCreator'
@@ -10,6 +11,7 @@ const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [showSignup, setShowSignup] = useState<boolean>(false)
   const [isFirstRun, setFirstRun] = useState<boolean>(false)
+  const [showPage, setShowPage] = useState<boolean>(false)
 
   useEffect(() => {
     const authStatus = localStorage.getItem('authenticated')
@@ -64,7 +66,11 @@ const App: React.FC = () => {
           {showSignup ? (
             <Signup onLogin={handleShowLogin} />
           ) : isAuthenticated ? (
-            <Page onLogout={handleLogout} />
+            showPage ? (
+              <Page onLogout={handleLogout} />
+            ) : (
+              <Menu onLogout={handleLogout} />
+            )
           ) : (
             <Login onLogin={handleLogin} onSignup={handleShowSignup} />
           )}
