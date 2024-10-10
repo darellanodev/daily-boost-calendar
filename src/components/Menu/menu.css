@@ -1,9 +1,6 @@
-.taskslists {
+#menu-minicalendars {
   display: flex;
-}
-
-.taskslists > div {
-  flex-grow: 1;
+  justify-content: center;
 }
 
 #menu-content {
