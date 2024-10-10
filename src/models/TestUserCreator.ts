@@ -111,25 +111,30 @@ export class TestUserCreator {
     const calendar1ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar1(),
     )
-    const calendar1 = new CalendarItem('Gym', calendar1ActiveDays)
+    let id = 1
+    const calendar1 = new CalendarItem('Gym', calendar1ActiveDays, id)
 
     const calendar2ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar2(),
     )
+    id = 2
     const calendar2 = new CalendarItem(
       'English Study Language',
       calendar2ActiveDays,
+      id,
     )
 
     const calendar3ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar3(),
     )
-    const calendar3 = new CalendarItem('Projects', calendar3ActiveDays)
+    id = 3
+    const calendar3 = new CalendarItem('Projects', calendar3ActiveDays, id)
 
     const calendar4ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar4(),
     )
-    const calendar4 = new CalendarItem('Katas', calendar4ActiveDays)
+    id = 4
+    const calendar4 = new CalendarItem('Katas', calendar4ActiveDays, id)
 
     return [calendar1, calendar2, calendar3, calendar4]
   }

@@ -4,6 +4,7 @@ import './menu.css'
 import { Tooltip } from 'react-tooltip'
 import { UsersManager } from '../../models/UsersManager'
 import { CalendarItem } from '../../models/CalendarItem'
+import { MiniCalendar } from '../MiniCalendar'
 
 type User = {
   name: string
@@ -62,6 +63,11 @@ export const Menu: React.FC<MenuProps> = ({ onLogout }) => {
             Click on the desired calendar from all the available to manage it.
           </p>
         </section>
+        <div id="menu-minicalendars">
+          {calendars.map((calendar) => (
+            <MiniCalendar key={calendar.id} miniCalendar={calendar} />
+          ))}
+        </div>
       </article>
     </div>
   )

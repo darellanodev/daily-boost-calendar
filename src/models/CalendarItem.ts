@@ -3,9 +3,11 @@ import { ActiveDays } from './ActiveDays'
 export class CalendarItem {
   #title: string
   #activeDays: ActiveDays
-  constructor(title: string, activeDays: ActiveDays) {
+  #id: number
+  constructor(title: string, activeDays: ActiveDays, id: number) {
     this.#title = title
     this.#activeDays = activeDays
+    this.#id = id
   }
   // todo: make activeDays an Object
   #jsonActiveDays() {}
@@ -25,5 +27,9 @@ export class CalendarItem {
 
   get activeDays(): ActiveDays {
     return this.#activeDays
+  }
+
+  get id(): number {
+    return this.#id
   }
 }
