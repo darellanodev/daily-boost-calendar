@@ -1,5 +1,5 @@
 import { ActiveDays } from '../../src/models/ActiveDays'
-import { Calendar } from '../../src/models/Calendar'
+import { CalendarItem } from '../../src/models/CalendarItem'
 import { User } from '../../src/models/User'
 
 const getActiveDaysForCalendar1 = () => {
@@ -17,8 +17,18 @@ const getActiveDaysForCalendar2 = () => {
 }
 
 test('get json, when an User object is created, returns the expected json', () => {
-  const calendar1 = new Calendar('Test Calendar 1', getActiveDaysForCalendar1())
-  const calendar2 = new Calendar('Test Calendar 2', getActiveDaysForCalendar2())
+  const calendar1Id = 1
+  const calendar1 = new CalendarItem(
+    'Test Calendar 1',
+    getActiveDaysForCalendar1(),
+    calendar1Id,
+  )
+  const calendar2Id = 2
+  const calendar2 = new CalendarItem(
+    'Test Calendar 2',
+    getActiveDaysForCalendar2(),
+    calendar2Id,
+  )
   const calendars = [calendar1, calendar2]
   const userId = 152
 
