@@ -9,8 +9,6 @@ export class CalendarItem {
     this.#activeDays = activeDays
     this.#id = id
   }
-  // todo: make activeDays an Object
-  #jsonActiveDays() {}
   get json(): string {
     return (
       '{"title": "' +
