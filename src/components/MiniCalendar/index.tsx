@@ -9,11 +9,16 @@ interface MiniCalendarProps {
 }
 
 export const MiniCalendar: React.FC<MiniCalendarProps> = ({ miniCalendar }) => {
+  console.log(miniCalendar)
+
+  const imgPath = `src/assets/img/calendar_icons/${miniCalendar.id}.svg`
   return (
     <div className="mini-calendar">
       <header className="mini-calendar__header">
-        <div className="mini-calendar__logo">logo</div>
-        <h2 className="mini-calendar__title">{miniCalendar.title} calendar</h2>
+        <div className="mini-calendar__logo">
+          <img src={imgPath} />
+        </div>
+        <h2 className="mini-calendar__title">{miniCalendar.title}</h2>
       </header>
       <main className="mini-calendar__content">
         <div className="mini-calendar__total-count">
