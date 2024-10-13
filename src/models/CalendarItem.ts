@@ -15,6 +15,8 @@ export class CalendarItem {
       this.#title +
       '", "activeDays": ' +
       this.#activeDays.json +
+      ', "id": ' +
+      this.#id +
       '}'
     )
   }
