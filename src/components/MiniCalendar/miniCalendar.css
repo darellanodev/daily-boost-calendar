@@ -1,12 +1,43 @@
-.minicalendar {
+.mini-calendar {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #ccc;
+  background-color: #222;
   padding: 1.2rem;
   margin: 0.2rem;
   height: 200px;
   width: 200px;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid #888;
   border-radius: 7px;
-  border-color: #888;
-  background-color: #222;
-  color: white;
+}
+
+.mini-calendar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #333;
+}
+
+.mini-calendar__logo {
+  background-color: rosybrown;
+  /* Añade estilos adicionales para el logo si es necesario */
+}
+
+.mini-calendar__title {
+  background-color: rebeccapurple;
+  margin: 0; /* Resetea el margen del h2 */
+  font-size: 1rem; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+.mini-calendar__content {
+  /* Añade estilos para el contenido principal si es necesario */
+  margin-top: 1rem;
+}
+
+.mini-calendar__total-count,
+.mini-calendar__streak-count {
+  /* Estilos para los contadores */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
