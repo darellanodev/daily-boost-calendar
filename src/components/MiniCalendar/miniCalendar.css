@@ -38,4 +38,18 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+}
+
+.mini-calendar__total-count > div,
+.mini-calendar__streak-count > div {
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.mini-calendar__total-count-number {
+  background-color: sienna;
+  border-radius: 5px;
 }
