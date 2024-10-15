@@ -118,11 +118,7 @@ export class TestUserCreator {
       this.#getActiveDaysForCalendar2(),
     )
     id = 2
-    const calendar2 = new CalendarItem(
-      'English Study Language',
-      calendar2ActiveDays,
-      id,
-    )
+    const calendar2 = new CalendarItem('English Study', calendar2ActiveDays, id)
 
     const calendar3ActiveDays = new ActiveDays(
       this.#getActiveDaysForCalendar3(),
