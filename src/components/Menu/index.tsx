@@ -60,7 +60,8 @@ export const Menu: React.FC<MenuProps> = ({ onLogout }) => {
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
           <p className="help">
-            Click on the desired calendar from all the available to manage it.
+            Click on the desired calendar from all the available calendars to
+            manage it.
           </p>
         </section>
         <div id="menu-minicalendars">
