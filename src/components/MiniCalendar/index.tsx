@@ -6,9 +6,13 @@ interface MiniCalendarProps {
     id: number
     title: string
   }
+  onManage: (calendarId: number) => void
 }
 
-export const MiniCalendar: React.FC<MiniCalendarProps> = ({ miniCalendar }) => {
+export const MiniCalendar: React.FC<MiniCalendarProps> = ({
+  miniCalendar,
+  onManage,
+}) => {
   console.log(miniCalendar)
 
   const imgPath = `src/assets/img/calendar_icons/${miniCalendar.id}.svg`
@@ -30,7 +34,12 @@ export const MiniCalendar: React.FC<MiniCalendarProps> = ({ miniCalendar }) => {
           <div className="mini-calendar__total-count-text">day streak</div>
         </div>
         <div>
-          <button className="mini-calendar__button">Manage</button>
+          <button
+            className="mini-calendar__button"
+            onClick={() => onManage(miniCalendar.id)}
+          >
+            Manage
+          </button>
         </div>
       </main>
     </div>

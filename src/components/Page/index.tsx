@@ -16,9 +16,10 @@ type User = {
 
 interface PageProps {
   onLogout: () => void
+  activeIdCalendar: number
 }
 
-export const Page: React.FC<PageProps> = ({ onLogout }) => {
+export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
   const [user, setUser] = React.useState<User>()
   const [calendarItem, setCalendarItem] = React.useState<CalendarItem | null>(
     null,
@@ -26,7 +27,9 @@ export const Page: React.FC<PageProps> = ({ onLogout }) => {
   const [daysItems, setDayItems] = React.useState<DayItem[]>([])
   const [totalContributions, setTotalContributions] = React.useState<number>(0)
   const [calendars, setCalendars] = React.useState<CalendarItem[]>([])
-  const [idCalendar, setIdCalendar] = React.useState<number>(0)
+  const [idCalendar, setIdCalendar] = React.useState<number>(
+    activeIdCalendar - 1,
+  )
 
   let currentStreak = 0
   let longestStreak = 0

@@ -12,15 +12,20 @@ type User = {
 
 interface MenuProps {
   onLogout: () => void
+  onManageCalendar: (calendarId: number) => void
 }
 
-export const Menu: React.FC<MenuProps> = ({ onLogout }) => {
+export const Menu: React.FC<MenuProps> = ({ onLogout, onManageCalendar }) => {
   const [user, setUser] = React.useState<User>()
   const [calendars, setCalendars] = React.useState<CalendarItem[]>([])
 
   const handleLogout = (): void => {
     setUser(undefined)
     onLogout()
+  }
+
+  const handleManageCalendar = (id: number): void => {
+    onManageCalendar(id)
   }
 
   useEffect(() => {
@@ -66,7 +71,11 @@ export const Menu: React.FC<MenuProps> = ({ onLogout }) => {
         </section>
         <div id="menu-minicalendars">
           {calendars.map((calendar) => (
-            <MiniCalendar key={calendar.id} miniCalendar={calendar} />
+            <MiniCalendar
+              key={calendar.id}
+              miniCalendar={calendar}
+              onManage={handleManageCalendar}
+            />
           ))}
         </div>
       </article>

@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [showSignup, setShowSignup] = useState<boolean>(false)
   const [isFirstRun, setFirstRun] = useState<boolean>(false)
   const [showPage, setShowPage] = useState<boolean>(false)
+  const [activeIdCalendar, setActiveIdCalendar] = useState<number>(1)
 
   useEffect(() => {
     const authStatus = localStorage.getItem('authenticated')
@@ -57,6 +58,12 @@ const App: React.FC = () => {
     setFirstRun(false)
   }
 
+  const handleManageCalendar = (id: number): void => {
+    console.log('Manage calendar: ' + id)
+    setActiveIdCalendar(id)
+    setShowPage(true)
+  }
+
   return (
     <div>
       {isFirstRun ? (
@@ -67,9 +74,15 @@ const App: React.FC = () => {
             <Signup onLogin={handleShowLogin} />
           ) : isAuthenticated ? (
             showPage ? (
-              <Page onLogout={handleLogout} />
+              <Page
+                onLogout={handleLogout}
+                activeIdCalendar={activeIdCalendar}
+              />
             ) : (
-              <Menu onLogout={handleLogout} />
+              <Menu
+                onLogout={handleLogout}
+                onManageCalendar={handleManageCalendar}
+              />
             )
           ) : (
             <Login onLogin={handleLogin} onSignup={handleShowSignup} />
