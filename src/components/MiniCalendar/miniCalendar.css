@@ -4,7 +4,6 @@
   background-color: #222;
   padding: 1.2rem;
   margin: 0.2rem;
-  height: 200px;
   width: 200px;
   border: 1px solid #888;
   border-radius: 7px;
@@ -51,4 +50,17 @@
 .mini-calendar__total-count-number {
   background-color: sienna;
   border-radius: 5px;
+}
+
+.mini-calendar__button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: darkslategray;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.mini-calendar__button:hover {
+  background-color: darkolivegreen;
 }

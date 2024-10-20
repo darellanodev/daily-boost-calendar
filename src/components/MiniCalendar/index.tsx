@@ -29,6 +29,9 @@ export const MiniCalendar: React.FC<MiniCalendarProps> = ({ miniCalendar }) => {
           <div className="mini-calendar__total-count-number">78</div>
           <div className="mini-calendar__total-count-text">day streak</div>
         </div>
+        <div>
+          <button className="mini-calendar__button">Manage</button>
+        </div>
       </main>
     </div>
   )
