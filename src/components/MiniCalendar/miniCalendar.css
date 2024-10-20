@@ -22,6 +22,11 @@
   width: auto;
 }
 
+.mini-calendar__streak-count-icon {
+  height: 20px;
+  width: auto;
+}
+
 .mini-calendar__title {
   margin-left: 1rem;
   font-size: 0.9rem;
@@ -33,12 +38,15 @@
 
 .mini-calendar__total-count,
 .mini-calendar__streak-count {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: flex;
   padding: 10px;
   margin: 10px;
+}
+.mini-calendar__total-count-text {
+  display: flex;
 }
 
 .mini-calendar__total-count > div,

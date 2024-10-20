@@ -31,7 +31,13 @@ export const MiniCalendar: React.FC<MiniCalendarProps> = ({
         </div>
         <div className="mini-calendar__streak-count">
           <div className="mini-calendar__total-count-number">78</div>
-          <div className="mini-calendar__total-count-text">day streak</div>
+          <div className="mini-calendar__total-count-text">
+            day streak
+            <img
+              className="mini-calendar__streak-count-icon"
+              src="src/assets/img/fire.svg"
+            />
+          </div>
         </div>
         <div>
           <button
