@@ -1,0 +1,27 @@
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.calendar-nav button {
+  flex: 0 0 auto;
+  background-color: dimgray;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.calendar-nav button:hover {
+  background-color: darkolivegreen;
+}
+
+.calendar-nav .calendar-title {
+  flex: 1 1 auto;
+  text-align: center;
+}
