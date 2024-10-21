@@ -67,6 +67,7 @@
   color: white;
   border: none;
   width: 100%;
+  cursor: pointer;
 }
 
 .mini-calendar__button:hover {
