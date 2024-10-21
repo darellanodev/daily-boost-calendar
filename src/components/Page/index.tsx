@@ -13,6 +13,7 @@ import {
   getTotalContributions,
   getActiveDaysFromCalendar,
 } from './calendar'
+import { CalendarNav } from '../CalendarNav'
 
 type User = {
   name: string
@@ -127,10 +128,14 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
       <article>
         <section>
           <p className="help">Welcome to the Daily Boost Calendar.</p>
-          <button onClick={handlePreviousCalendar}>◀️ Previous Calendar</button>
-          <button onClick={handleNextCalendar}>Next Calendar ▶️</button>
+
           <div className="taskslists">
-            <Calendar calendarItem={calendarItem} days={daysItems} />
+            <Calendar
+              calendarItem={calendarItem}
+              days={daysItems}
+              handlePreviousCalendar={handlePreviousCalendar}
+              handleNextCalendar={handleNextCalendar}
+            />
           </div>
           <Stats
             totalContributions={totalContributions}
