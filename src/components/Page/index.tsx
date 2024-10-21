@@ -4,11 +4,15 @@ import { Header } from '../Header'
 import './page.css'
 import { Stats } from '../Stats'
 import { DayItem } from '../../models/DayItem'
-import { DatesProvider } from '../../utils/DatesProvider'
 import { Tooltip } from 'react-tooltip'
 import { UsersManager } from '../../models/UsersManager'
 import { CalendarItem } from '../../models/CalendarItem'
-import { ActiveDays } from '../../models/ActiveDays'
+import {
+  getDates,
+  getDayItems,
+  getTotalContributions,
+  getActiveDaysFromCalendar,
+} from './calendar'
 
 type User = {
   name: string
@@ -33,34 +37,6 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
 
   let currentStreak = 0
   let longestStreak = 0
-
-  const getDates = () => {
-    const totalWeeks = 23
-    const datesProvider = new DatesProvider(totalWeeks)
-    datesProvider.calculate()
-    return datesProvider.dates
-  }
-
-  const getDayItems = (dates: string[], activeDays: string[]) => {
-    const daysItems: DayItem[] = []
-    let i = 1
-    for (const date of dates) {
-      let completed = activeDays.includes(date)
-      daysItems.push(new DayItem(i, date, completed))
-      i++
-    }
-    return daysItems
-  }
-
-  const getTotalContributions = (daysItem: DayItem[]) => {
-    let totalContributions = 0
-    for (const dayItem of daysItem) {
-      if (dayItem.completed) {
-        totalContributions++
-      }
-    }
-    return totalContributions
-  }
 
   const handleLogout = (): void => {
     setUser(undefined)
@@ -100,15 +76,6 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
 
       return nextIdCalendar
     })
-  }
-
-  const getActiveDaysFromCalendar = (id: number, calendars: CalendarItem[]) => {
-    if (Array.isArray(calendars[id].activeDays)) {
-      const aux: string[] = calendars[id].activeDays as string[]
-      return new ActiveDays(aux)
-    } else {
-      throw new Error('Error: activeDays is not an array')
-    }
   }
 
   useEffect(() => {
