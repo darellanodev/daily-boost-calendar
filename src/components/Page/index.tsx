@@ -127,7 +127,10 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
       <Tooltip id="day-tooltip" />
       <article>
         <section>
-          <p className="help">Welcome to the Daily Boost Calendar.</p>
+          <p className="help">
+            You can navigate through the available calendars using the next and
+            previous calendar buttons.
+          </p>
 
           <div className="taskslists">
             <Calendar
