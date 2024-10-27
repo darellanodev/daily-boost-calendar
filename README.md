@@ -2,6 +2,10 @@
 
 An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICATION IS IN AN EARLY STAGE OF DEVELOPMENT)_
 
+## Github repository
+
+- <https://github.com/darellanodev/daily-boost-calendar>
+
 ## Requeriments
 
 Node, pnpm (recommended instead of npm).
