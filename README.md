@@ -1,12 +1,14 @@
 # Daily Boost Calendar
 
-An Easy calendar like the github calendar for learning pourposes. _(THIS APPLICATION IS IN AN EARLY STAGE OF DEVELOPMENT)_
+An Easy calendar like the github calendar for learning purposes.
+
+## THIS APPLICATION IS IN AN EARLY STAGE OF DEVELOPMENT
 
 ## Github repository
 
 - <https://github.com/darellanodev/daily-boost-calendar>
 
-## Requeriments
+## Requirements
 
 Node, pnpm (recommended instead of npm).
 
@@ -24,7 +26,7 @@ Run the command `pnpm install`
 
 ## E2E tests
 
-- Run the applicacion in development mode
+- Run the application in development mode
 - Then, after the application is running, execute `./run_e2e.sh`
 
 ## Running the StoryBook environment
