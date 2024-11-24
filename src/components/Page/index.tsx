@@ -13,7 +13,6 @@ import {
   getTotalContributions,
   getActiveDaysFromCalendar,
 } from './calendar'
-import { CalendarNav } from '../CalendarNav'
 
 type User = {
   name: string
