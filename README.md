@@ -8,6 +8,11 @@ An Easy calendar like the github calendar for learning purposes.
 
 - <https://github.com/darellanodev/daily-boost-calendar>
 
+## Screenshots
+
+![daily-boost-calendar screenshot1](https://github.com/darellanodev/daily-boost-calendar/blob/main/img_github_readme/screenshot1.png?raw=true)
+![daily-boost-calendar screenshot2](https://github.com/darellanodev/daily-boost-calendar/blob/main/img_github_readme/screenshot2.png?raw=true)
+
 ## Requirements
 
 Node, pnpm (recommended instead of npm).
