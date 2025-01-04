@@ -51,9 +51,6 @@ Run the command `pnpm install`
 ## Build
 
 - Execute the script `./run_build.sh`
-- Manual corrections:
-  - After completing the build process, you must manually remove the first slash from each URL in the `index.html` file.
-  - For the moment, Vite is not copying the file src/assets/img/logo.svg
 
 ## How to contribute
 
