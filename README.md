@@ -25,7 +25,7 @@ An Easy calendar like the github calendar for learning purposes.
 
 ## Try it online
 
-<https://darellanodev.github.io/playablegames/dailyboostcalendar/index.html>
+<https://darellanodev.github.io/tryitonline/dailyboostcalendar/index.html>
 
 ## Requirements
 
