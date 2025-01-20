@@ -15,7 +15,7 @@ export const MiniCalendar: React.FC<MiniCalendarProps> = ({
 }) => {
   console.log(miniCalendar)
 
-  const imgPath = `src/assets/img/calendar_icons/${miniCalendar.id}.svg`
+  const imgPath = `./img/calendar_icons/${miniCalendar.id}.svg`
   return (
     <div className="mini-calendar">
       <header className="mini-calendar__header">
@@ -35,7 +35,7 @@ export const MiniCalendar: React.FC<MiniCalendarProps> = ({
             day streak
             <img
               className="mini-calendar__streak-count-icon"
-              src="src/assets/img/fire.svg"
+              src="./img/fire.svg"
             />
           </div>
         </div>

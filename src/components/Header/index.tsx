@@ -25,7 +25,7 @@ export const Header = ({
   <header>
     <div className="wrapper">
       <div>
-        <img id="header-logo" src="src/assets/img/logo.svg" />
+        <img id="header-logo" src="./img/logo.svg" />
         <h1 id="header-title">Daily Boost Calendar</h1>
       </div>
       <div>
