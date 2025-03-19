@@ -33,7 +33,8 @@ Node, pnpm (recommended instead of npm).
 
 ## Installation
 
-Run the command `pnpm install`
+- Run the command `pnpm install`
+- It's possible that you need to install or update the new browsers to run the E2E Tests `pnpm exec playwright install`
 
 ## Running the application in development mode
 
