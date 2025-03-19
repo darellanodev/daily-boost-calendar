@@ -46,7 +46,7 @@ Node, pnpm (recommended instead of npm).
 
 ## E2E tests
 
-- Run the application in development mode
+- Run the application in development mode `./run.sh`
 - Then, after the application is running, execute `./run_e2e.sh`
 
 ## Running the StoryBook environment
