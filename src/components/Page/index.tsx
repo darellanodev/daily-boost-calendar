@@ -34,7 +34,10 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
   const [idCalendar, setIdCalendar] = React.useState<number>(
     activeIdCalendar - 1,
   )
-
+  const [isActivePreviousCalendar, setIsActivePreviousCalendar] =
+    React.useState<boolean>(true)
+  const [isActiveNextCalendar, setIsActiveNextCalendar] =
+    React.useState<boolean>(true)
   let currentStreak = 0
   let longestStreak = 0
 
@@ -58,6 +61,7 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
     setIdCalendar((prevIdCalendar) => {
       const nextIdCalendar = prevIdCalendar + 1
       if (calendars[nextIdCalendar] === undefined) {
+        setIsActiveNextCalendar(false)
         return prevIdCalendar
       }
       loadCalendar(nextIdCalendar)
@@ -70,6 +74,7 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
     setIdCalendar((prevIdCalendar) => {
       const nextIdCalendar = prevIdCalendar - 1
       if (calendars[nextIdCalendar] === undefined) {
+        setIsActivePreviousCalendar(false)
         return prevIdCalendar
       }
       loadCalendar(nextIdCalendar)
@@ -115,6 +120,12 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
     setTotalContributions(getTotalContributions(daysItems))
   }, [])
 
+  useEffect(() => {
+    // Actualiza la visibilidad de los botones después de cada render
+    setIsActivePreviousCalendar(calendars[idCalendar - 1] !== undefined)
+    setIsActiveNextCalendar(calendars[idCalendar + 1] !== undefined)
+  }, [idCalendar, calendars])
+
   return (
     <div id="page-content">
       <Header
@@ -137,6 +148,8 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
               days={daysItems}
               handlePreviousCalendar={handlePreviousCalendar}
               handleNextCalendar={handleNextCalendar}
+              isActivePreviousCalendar={isActivePreviousCalendar}
+              isActiveNextCalendar={isActiveNextCalendar}
             />
           </div>
           <Stats

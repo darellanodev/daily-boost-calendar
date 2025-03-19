@@ -9,6 +9,8 @@ interface CalendarProps {
   days: DayItem[]
   handlePreviousCalendar: () => void
   handleNextCalendar: () => void
+  isActivePreviousCalendar: boolean
+  isActiveNextCalendar: boolean
 }
 
 export const Calendar: React.FC<CalendarProps> = ({
@@ -16,6 +18,8 @@ export const Calendar: React.FC<CalendarProps> = ({
   days,
   handlePreviousCalendar,
   handleNextCalendar,
+  isActivePreviousCalendar,
+  isActiveNextCalendar,
 }) => {
   const calendarTitle = calendarItem ? calendarItem.title : 'not defined'
   return (
@@ -25,6 +29,8 @@ export const Calendar: React.FC<CalendarProps> = ({
           handlePreviousCalendar={handlePreviousCalendar}
           handleNextCalendar={handleNextCalendar}
           calendarTitle={calendarTitle}
+          isActivePreviousCalendar={isActivePreviousCalendar}
+          isActiveNextCalendar={isActiveNextCalendar}
         />
       </div>
       <div className="calendar-card-body">
