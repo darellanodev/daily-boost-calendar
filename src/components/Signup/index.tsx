@@ -23,7 +23,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [currentUser, setCurrentUser] = React.useState<CurrentUser>()
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const getDefaultCalendarsNewUser = (): CalendarItem[] => {
+  const getNewUserDefaultCalendar = (): CalendarItem[] => {
     const calendar1ActiveDays = new ActiveDays([])
     const calendar1 = new CalendarItem('Default', calendar1ActiveDays, 1)
     const calendars: CalendarItem[] = []
@@ -54,7 +54,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
       username,
       password,
       123,
-      getDefaultCalendarsNewUser(),
+      getNewUserDefaultCalendar(),
     )
 
     const finalUsersJSON = usersManager.create(newUser.json)
