@@ -1,0 +1,8 @@
+.alert-insecure-data {
+  padding: 10px;
+  border-radius: 10px;
+  border-color: #32a1ce;
+  border-style: solid;
+  background-color: darkslategrey;
+  width: 500px;
+}

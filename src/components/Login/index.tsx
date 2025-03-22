@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Header } from '../Header'
 import { Button } from '../Button'
+import { AlertInsecureData } from '../AlertInsecureData'
 
 import './login.css'
 
@@ -70,6 +71,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
 
       <article>
         <section>
+          <AlertInsecureData />
           <h3>Login</h3>
           <form id="login-form" onSubmit={handleSubmit}>
             <div>

@@ -7,6 +7,7 @@ import { User } from '../../models/User'
 import { CalendarItem } from '../../models/CalendarItem'
 import { UsersManager } from '../../models/UsersManager'
 import { ActiveDays } from '../../models/ActiveDays'
+import { AlertInsecureData } from '../AlertInsecureData'
 
 interface SignupProps {
   onLogin: () => void
@@ -72,6 +73,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
 
       <article>
         <section>
+          <AlertInsecureData />
           <h3>Sign up</h3>
           <form id="signup-form" onSubmit={handleSubmit}>
             <div>
