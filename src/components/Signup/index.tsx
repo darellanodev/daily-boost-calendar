@@ -24,7 +24,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [errorMessage, setErrorMessage] = useState<string>('')
 
   const getDefaultCalendarsNewUser = (): CalendarItem[] => {
-    const calendar1ActiveDays = new ActiveDays(['06/08/2024', '07/08/2024'])
+    const calendar1ActiveDays = new ActiveDays([])
     const calendar1 = new CalendarItem('Default', calendar1ActiveDays, 1)
     const calendars: CalendarItem[] = []
     calendars.push(calendar1)
