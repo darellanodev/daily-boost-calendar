@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Header } from '../Header'
 import { Button } from '../Button'
 import { AlertInsecureData } from '../AlertInsecureData'
+import { decryptPassword } from '../../utils/encrypt'
 
 import './login.css'
 
@@ -27,7 +28,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
   ): boolean => {
     for (let user of users) {
       if (user.username === username) {
-        if (user.password === password) {
+        if (decryptPassword(user.password) === password) {
           return true
         } else {
           return false

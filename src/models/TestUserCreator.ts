@@ -2,13 +2,14 @@ import { ActiveDays } from './ActiveDays'
 import { CalendarItem } from './CalendarItem'
 import { User } from './User'
 import { UsersManager } from './UsersManager'
+import { encryptPassword } from '../utils/encrypt'
 
 export class TestUserCreator {
   create(usersJSON: string): string {
     const usersManager = new UsersManager(usersJSON)
 
     const username = 'testuser'
-    const password = 'testpass'
+    const password = encryptPassword('testpass')
     const userid = 1
 
     // calendars

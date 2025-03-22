@@ -9,6 +9,8 @@ import { UsersManager } from '../../models/UsersManager'
 import { ActiveDays } from '../../models/ActiveDays'
 import { AlertInsecureData } from '../AlertInsecureData'
 
+import { encryptPassword } from '../../utils/encrypt'
+
 interface SignupProps {
   onLogin: () => void
 }
@@ -53,7 +55,7 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
     // create new user
     const newUser = new User(
       username,
-      password,
+      encryptPassword(password),
       123,
       getNewUserDefaultCalendar(),
     )
