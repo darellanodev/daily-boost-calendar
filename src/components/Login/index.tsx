@@ -9,13 +9,18 @@ import './login.css'
 interface LoginProps {
   onLogin: () => void
   onSignup: () => void
+  showSignedUpSuccessfully: boolean
 }
 
 type User = {
   name: string
 }
 
-export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
+export const Login: React.FC<LoginProps> = ({
+  onLogin,
+  onSignup,
+  showSignedUpSuccessfully,
+}) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [user, setUser] = React.useState<User>()
@@ -73,6 +78,11 @@ export const Login: React.FC<LoginProps> = ({ onLogin, onSignup }) => {
       <article>
         <section>
           <AlertInsecureData />
+          {showSignedUpSuccessfully && (
+            <div className="signup-success">
+              Signed up successfully, now you can login
+            </div>
+          )}
           <h3>Login</h3>
           <form id="login-form" onSubmit={handleSubmit}>
             <div>

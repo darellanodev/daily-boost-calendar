@@ -53,3 +53,13 @@ input::placeholder {
 .error-message {
   color: lightcoral;
 }
+
+.signup-success {
+  background-color: darkslategray;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #32a1ce;
+}

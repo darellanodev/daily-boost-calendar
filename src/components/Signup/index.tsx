@@ -13,13 +13,17 @@ import { encryptPassword } from '../../utils/encrypt'
 
 interface SignupProps {
   onLogin: () => void
+  onSignedUpSuccessfully: () => void
 }
 
 type CurrentUser = {
   name: string
 }
 
-export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
+export const Signup: React.FC<SignupProps> = ({
+  onLogin,
+  onSignedUpSuccessfully,
+}) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [repeatedPassword, setRepeatedPassword] = useState<string>('')
@@ -62,6 +66,8 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
 
     const finalUsersJSON = usersManager.create(newUser.json)
     localStorage.setItem('users', finalUsersJSON)
+    onLogin()
+    onSignedUpSuccessfully()
   }
 
   return (

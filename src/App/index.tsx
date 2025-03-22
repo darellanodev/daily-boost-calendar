@@ -13,6 +13,8 @@ const App: React.FC = () => {
   const [isFirstRun, setFirstRun] = useState<boolean>(false)
   const [showPage, setShowPage] = useState<boolean>(false)
   const [activeIdCalendar, setActiveIdCalendar] = useState<number>(1)
+  const [showSignedUpSuccessfully, setShowSignedUpSuccessfully] =
+    useState<boolean>(false)
 
   useEffect(() => {
     const authStatus = localStorage.getItem('authenticated')
@@ -20,7 +22,7 @@ const App: React.FC = () => {
       setIsAuthenticated(true)
     }
 
-    // check if it is the first time we are usign the app
+    // check if it is the first time we are using the app
     let usersJSON: string | null = localStorage.getItem('users')
     if (usersJSON === null || usersJSON === '' || usersJSON === '[]') {
       usersJSON = '[]'
@@ -54,6 +56,10 @@ const App: React.FC = () => {
     setShowSignup(true)
   }
 
+  const handleShowSignedUpSuccessfully = (): void => {
+    setShowSignedUpSuccessfully(true)
+  }
+
   const handleContinueFirstRun = (): void => {
     setFirstRun(false)
   }
@@ -71,7 +77,10 @@ const App: React.FC = () => {
       ) : (
         <>
           {showSignup ? (
-            <Signup onLogin={handleShowLogin} />
+            <Signup
+              onLogin={handleShowLogin}
+              onSignedUpSuccessfully={handleShowSignedUpSuccessfully}
+            />
           ) : isAuthenticated ? (
             showPage ? (
               <Page
@@ -85,7 +94,11 @@ const App: React.FC = () => {
               />
             )
           ) : (
-            <Login onLogin={handleLogin} onSignup={handleShowSignup} />
+            <Login
+              onLogin={handleLogin}
+              onSignup={handleShowSignup}
+              showSignedUpSuccessfully={showSignedUpSuccessfully}
+            />
           )}
         </>
       )}

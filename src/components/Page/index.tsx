@@ -121,7 +121,6 @@ export const Page: React.FC<PageProps> = ({ onLogout, activeIdCalendar }) => {
   }, [])
 
   useEffect(() => {
-    // Actualiza la visibilidad de los botones después de cada render
     setIsActivePreviousCalendar(calendars[idCalendar - 1] !== undefined)
     setIsActiveNextCalendar(calendars[idCalendar + 1] !== undefined)
   }, [idCalendar, calendars])
