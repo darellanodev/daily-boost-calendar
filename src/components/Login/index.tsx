@@ -5,6 +5,7 @@ import { AlertInsecureData } from '../AlertInsecureData'
 import { decryptPassword } from '../../utils/encrypt'
 
 import './login.css'
+import { Message } from '../Message'
 
 interface LoginProps {
   onLogin: () => void
@@ -79,9 +80,11 @@ export const Login: React.FC<LoginProps> = ({
         <section>
           <AlertInsecureData />
           {showSignedUpSuccessfully && (
-            <div className="signup-success">
-              Signed up successfully, now you can login
-            </div>
+            <Message
+              title="Signed up successfully."
+              content="Now you can login."
+              isOneLine={true}
+            />
           )}
           <h3>Login</h3>
           <form id="login-form" onSubmit={handleSubmit}>
