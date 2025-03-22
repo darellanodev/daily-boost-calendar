@@ -1,6 +1,7 @@
 import { ActiveDays } from '../../src/models/ActiveDays'
 import { CalendarItem } from '../../src/models/CalendarItem'
 import { User } from '../../src/models/User'
+import { test, expect } from 'vitest'
 
 const getActiveDaysForCalendar1 = () => {
   const activeDaysList = ['08/05/2024', '09/05/2024', '10/05/2024']

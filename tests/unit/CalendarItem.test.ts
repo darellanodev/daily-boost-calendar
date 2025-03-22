@@ -1,5 +1,7 @@
 import { ActiveDays } from '../../src/models/ActiveDays'
 import { CalendarItem } from '../../src/models/CalendarItem'
+import { test, expect } from 'vitest'
+
 test('get json, when a CalendarItem object is created, returns the expected json', () => {
   const activeDaysList = ['08/05/2024', '09/05/2024', '10/05/2024']
   const activeDays = new ActiveDays(activeDaysList)

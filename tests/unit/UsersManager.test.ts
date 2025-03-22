@@ -1,5 +1,6 @@
 import { UsersManager } from '../../src/models/UsersManager'
 import { User } from '../../src/models/User'
+import { test, expect } from 'vitest'
 
 const getNewUser = () => {
   const calendars = []
