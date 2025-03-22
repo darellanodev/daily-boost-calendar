@@ -6,6 +6,7 @@ import './signup.css'
 import { User } from '../../models/User'
 import { CalendarItem } from '../../models/CalendarItem'
 import { UsersManager } from '../../models/UsersManager'
+import { ActiveDays } from '../../models/ActiveDays'
 
 interface SignupProps {
   onLogin: () => void
@@ -21,6 +22,14 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
   const [repeatedPassword, setRepeatedPassword] = useState<string>('')
   const [currentUser, setCurrentUser] = React.useState<CurrentUser>()
   const [errorMessage, setErrorMessage] = useState<string>('')
+
+  const getDefaultCalendarsNewUser = (): CalendarItem[] => {
+    const calendar1ActiveDays = new ActiveDays(['06/08/2024', '07/08/2024'])
+    const calendar1 = new CalendarItem('Default', calendar1ActiveDays, 1)
+    const calendars: CalendarItem[] = []
+    calendars.push(calendar1)
+    return calendars
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -41,8 +50,12 @@ export const Signup: React.FC<SignupProps> = ({ onLogin }) => {
     }
 
     // create new user
-    const calendars: CalendarItem[] = []
-    const newUser = new User(username, password, 123, calendars)
+    const newUser = new User(
+      username,
+      password,
+      123,
+      getDefaultCalendarsNewUser(),
+    )
 
     const finalUsersJSON = usersManager.create(newUser.json)
     localStorage.setItem('users', finalUsersJSON)
