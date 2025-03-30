@@ -53,3 +53,11 @@ input::placeholder {
 .error-message {
   color: lightcoral;
 }
+
+#login-link {
+  padding: 20px;
+}
+
+#login-link > a {
+  color: #32a1ce;
+}

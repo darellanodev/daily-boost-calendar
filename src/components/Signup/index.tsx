@@ -70,6 +70,10 @@ export const Signup: React.FC<SignupProps> = ({
     onSignedUpSuccessfully()
   }
 
+  const handleLogin = () => {
+    onLogin()
+  }
+
   return (
     <div id="signup-content">
       <Header
@@ -122,6 +126,12 @@ export const Signup: React.FC<SignupProps> = ({
 
             <Button primary size="small" label="Signup" type="submit" />
           </form>
+          <div id="login-link">
+            Do you already have an account?{' '}
+            <a href="#" onClick={handleLogin}>
+              Log in here
+            </a>
+          </div>
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
         </section>

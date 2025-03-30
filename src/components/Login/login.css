@@ -57,6 +57,7 @@ input::placeholder {
 #signup-link {
   padding: 20px;
 }
+
 #signup-link > a {
   color: #32a1ce;
 }
