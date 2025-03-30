@@ -81,6 +81,7 @@ export const Signup: React.FC<SignupProps> = ({
         onLogin={onLogin}
         onLogout={() => setCurrentUser(undefined)}
         onCreateAccount={() => {}}
+        activeButton={1}
       />
 
       <article>
@@ -124,7 +125,7 @@ export const Signup: React.FC<SignupProps> = ({
               />
             </div>
 
-            <Button primary size="small" label="Signup" type="submit" />
+            <Button mode="primary" size="small" label="Signup" type="submit" />
           </form>
           <div id="login-link">
             Do you already have an account?{' '}

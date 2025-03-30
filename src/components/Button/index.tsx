@@ -2,7 +2,7 @@ import React from 'react'
 import './button.css'
 
 interface ButtonProps {
-  primary?: boolean
+  mode?: 'primary' | 'secondary' | 'disabled'
   backgroundColor?: string
   size?: 'small' | 'medium' | 'large'
   label: string
@@ -11,21 +11,20 @@ interface ButtonProps {
 }
 
 export const Button = ({
-  primary = false,
+  mode = 'primary',
   size = 'medium',
   backgroundColor,
   label,
   type = 'button',
   ...props
 }: ButtonProps) => {
-  const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary'
   return (
     <button
-      className={['storybook-button', `storybook-button--${size}`, mode].join(
-        ' ',
-      )}
+      className={[
+        'storybook-button',
+        `storybook-button--${size}`,
+        `storybook-button--${mode}`,
+      ].join(' ')}
       style={{ backgroundColor }}
       type={type}
       {...props}

@@ -3,15 +3,20 @@
   font-weight: 700;
   border: 0;
   border-radius: 3em;
-  cursor: pointer;
   display: inline-block;
   line-height: 1;
 }
 .storybook-button--primary {
+  cursor: pointer;
   color: white;
   background-color: #1ea7fd;
 }
+.storybook-button--disabled {
+  color: #bbbbbb;
+  background-color: #5b5b5b;
+}
 .storybook-button--secondary {
+  cursor: pointer;
   color: #bbb;
   background-color: transparent;
   box-shadow: rgba(0, 0, 0) 0px 0px 0px 1px inset;

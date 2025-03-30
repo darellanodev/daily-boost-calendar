@@ -13,6 +13,7 @@ interface HeaderProps {
   onLogout: () => void
   onCreateAccount: () => void
   showButtons?: boolean
+  activeButton: number
 }
 
 export const Header = ({
@@ -21,6 +22,7 @@ export const Header = ({
   onLogout,
   onCreateAccount,
   showButtons = true,
+  activeButton = 2,
 }: HeaderProps) => (
   <header>
     <div className="wrapper">
@@ -43,9 +45,14 @@ export const Header = ({
         ) : (
           showButtons && (
             <>
-              <Button size="small" onClick={onLogin} label="Log in" />
               <Button
-                primary
+                mode={activeButton === 1 ? 'primary' : 'disabled'}
+                size="small"
+                onClick={onLogin}
+                label="Log in"
+              />
+              <Button
+                mode={activeButton === 2 ? 'primary' : 'disabled'}
                 size="small"
                 onClick={onCreateAccount}
                 label="Sign up"
