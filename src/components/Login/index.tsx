@@ -114,6 +114,9 @@ export const Login: React.FC<LoginProps> = ({
 
             <Button primary size="small" label="Login" type="submit" />
           </form>
+          <div id="signup-link">
+            Don't have an account? <a href="">Create an account</a>
+          </div>
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
         </section>
