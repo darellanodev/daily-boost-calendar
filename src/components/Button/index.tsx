@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaUnlock, FaUserPlus } from 'react-icons/fa'
 import './button.css'
 
 interface ButtonProps {
@@ -8,6 +9,7 @@ interface ButtonProps {
   label: string
   onClick?: () => void
   type?: 'button' | 'submit'
+  icon?: React.ReactNode
 }
 
 export const Button = ({
@@ -16,6 +18,7 @@ export const Button = ({
   backgroundColor,
   label,
   type = 'button',
+  icon = null,
   ...props
 }: ButtonProps) => {
   return (
@@ -29,7 +32,13 @@ export const Button = ({
       type={type}
       {...props}
     >
-      {label}
+      {icon !== null ? (
+        <>
+          {icon} {label}
+        </>
+      ) : (
+        label
+      )}
     </button>
   )
 }

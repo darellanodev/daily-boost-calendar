@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Header } from '../Header'
 import { Button } from '../Button'
-
+import { FaUserPlus } from 'react-icons/fa'
 import './signup.css'
 import { User } from '../../models/User'
 import { CalendarItem } from '../../models/CalendarItem'
@@ -87,7 +87,9 @@ export const Signup: React.FC<SignupProps> = ({
       <article>
         <section>
           <AlertInsecureData />
-          <h3>Sign up</h3>
+          <h3>
+            <FaUserPlus /> Sign up
+          </h3>
           <form id="signup-form" onSubmit={handleSubmit}>
             <div>
               <label>Username:</label>

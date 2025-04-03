@@ -3,7 +3,7 @@ import { Header } from '../Header'
 import { Button } from '../Button'
 import { AlertInsecureData } from '../AlertInsecureData'
 import { decryptPassword } from '../../utils/encrypt'
-
+import { FaSignInAlt } from 'react-icons/fa'
 import './login.css'
 import { Message } from '../Message'
 
@@ -91,7 +91,9 @@ export const Login: React.FC<LoginProps> = ({
               isOneLine={true}
             />
           )}
-          <h3>Login</h3>
+          <h3>
+            <FaSignInAlt /> Login
+          </h3>
           <form id="login-form" onSubmit={handleSubmit}>
             <div>
               <label>Username:</label>

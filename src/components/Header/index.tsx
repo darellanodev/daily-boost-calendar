@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Button } from '../Button'
 import './header.css'
 
@@ -15,6 +14,8 @@ interface HeaderProps {
   showButtons?: boolean
   activeButton: number
 }
+
+import { FaUserPlus, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 
 export const Header = ({
   user,
@@ -38,7 +39,12 @@ export const Header = ({
                 <span className="header-welcome">
                   Welcome, <b>{user.name}</b>!
                 </span>
-                <Button size="small" onClick={onLogout} label="Log out" />
+                <Button
+                  size="small"
+                  onClick={onLogout}
+                  label="Log out"
+                  icon={<FaSignOutAlt />}
+                />
               </>
             )}
           </>
@@ -50,12 +56,14 @@ export const Header = ({
                 size="small"
                 onClick={onLogin}
                 label="Log in"
+                icon={<FaSignInAlt />}
               />
               <Button
                 mode={activeButton === 2 ? 'primary' : 'disabled'}
                 size="small"
                 onClick={onCreateAccount}
                 label="Sign up"
+                icon={<FaUserPlus />}
               />
             </>
           )
