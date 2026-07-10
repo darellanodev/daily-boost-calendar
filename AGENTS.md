@@ -116,3 +116,7 @@ Models live in `src/models/` as ES6 classes with **private `#field` syntax**.
 - No routing library — conditional rendering with nested ternaries
 - Data models use manual JSON string building (not `JSON.stringify`)
 - `types.ts` is minimal and not exported — keep shared types here if adding more
+
+## Maintenance
+
+Whenever making changes to the project, review this file and update it to stay coherent with the current state of the codebase.
